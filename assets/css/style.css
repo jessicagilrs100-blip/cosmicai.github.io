@@ -128,9 +128,12 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-top: 80px;
     background: url('../img/hero-bg.jpg') no-repeat center center;
     background-size: cover;
+    text-align: center;
+    overflow: hidden;
 }
 
 .hero::before {
@@ -140,43 +143,40 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(5, 8, 22, 0.4) 0%, rgba(5, 8, 22, 0.9) 100%);
+    background: radial-gradient(circle at center, rgba(5, 8, 22, 0.3) 0%, rgba(5, 8, 22, 0.9) 100%);
     z-index: 1;
 }
 
 .hero .container {
     position: relative;
     z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4rem;
+    max-width: 900px;
 }
 
 .hero-content {
-    flex: 1;
-    text-align: left;
-}
-
-.hero-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+    z-index: 10;
 }
 
-.zodiac-wheel-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
+/* Background Zodiac Wheel */
+.bg-zodiac-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140vh; /* Aumentado para ser bem grande */
+    height: 140vh;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.15; /* Opacidade baixa para não atrapalhar o texto */
 }
 
-.zodiac-wheel {
+.bg-zodiac-wheel {
     width: 100%;
-    height: auto;
-    filter: drop-shadow(0 0 30px rgba(147, 51, 234, 0.5));
-    animation: rotateWheel 60s linear infinite;
+    height: 100%;
+    object-fit: contain;
+    animation: rotateWheel 120s linear infinite;
+    filter: drop-shadow(0 0 50px rgba(147, 51, 234, 0.8));
 }
 
 @keyframes rotateWheel {
@@ -202,25 +202,29 @@ body {
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 4.5rem;
+    font-size: 5rem;
     font-weight: 900;
     margin-bottom: 1.5rem;
     color: white;
     line-height: 1.1;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    text-shadow: 0 0 30px rgba(0,0,0,0.8);
 }
 
 .hero p {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--text-secondary);
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     line-height: 1.6;
-    max-width: 600px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .cta-buttons {
     display: flex;
     gap: 1.5rem;
+    justify-content: center;
 }
 
 /* Features Section */
@@ -228,6 +232,7 @@ body {
     padding: 100px 0;
     background: var(--darker-bg);
     position: relative;
+    z-index: 20;
 }
 
 .features h2 {
@@ -280,25 +285,12 @@ body {
 
 /* Responsive */
 @media (max-width: 1024px) {
-    .hero .container {
-        flex-direction: column;
-        text-align: center;
-        gap: 3rem;
-    }
-    
-    .hero-content {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: 4rem;
     }
-    
-    .hero p {
-        margin: 0 auto 3rem;
+    .bg-zodiac-container {
+        width: 100vh;
+        height: 100vh;
     }
 }
 
@@ -308,19 +300,22 @@ body {
     }
     
     .hero h1 {
-        font-size: 2.8rem;
+        font-size: 3rem;
     }
     
     .cta-buttons {
         flex-direction: column;
         width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
     }
     
     .btn {
         width: 100%;
     }
     
-    .zodiac-wheel-container {
-        max-width: 300px;
+    .bg-zodiac-container {
+        width: 80vh;
+        height: 80vh;
     }
 }
