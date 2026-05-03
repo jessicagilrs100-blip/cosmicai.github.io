@@ -2,240 +2,112 @@
 
 ## 1. Preparação Inicial
 
-Antes de submeter seu site para aprovação, certifique-se de que todos os requisitos foram atendidos:
+Antes de enviar seu site para análise, certifique-se de que todos os pontos abaixo foram atendidos:
 
-- Seu site está hospedado e acessível publicamente
-- Todas as páginas obrigatórias estão presentes (Privacidade, Termos)
-- O conteúdo é original e de qualidade
-- Não há conteúdo proibido ou violações de política
-- O site tem design responsivo e funciona em dispositivos móveis
+- O site está publicado e acessível para qualquer pessoa na internet.
+- As páginas de **Política de Privacidade** e **Termos de Uso** estão presentes e traduzidas.
+- O conteúdo é original, útil e de boa qualidade.
+- Não há violações das políticas do Google (como conteúdo violento ou impróprio).
+- O design é amigável para dispositivos móveis (celulares e tablets).
 
-## 2. Submissão no Google Search Console
+## 2. Configuração no Google Search Console
 
-O Google Search Console é essencial para que o Google indexe seu site corretamente.
+O Google Search Console é a ferramenta que ajuda o Google a entender e indexar o seu site.
 
-### Passo 1: Acessar o Google Search Console
+### Passo 1: Acessar a Ferramenta
 
-1. Acesse https://search.google.com/search-console/
-2. Faça login com sua conta Google
-3. Clique em "Adicionar propriedade"
-4. Escolha "URL prefix" e digite sua URL: `https://jessicagilrs100-blip.github.io/cosmicai.github.io/`
+1. Acesse [Google Search Console](https://search.google.com/search-console/).
+2. Faça login com sua conta do Google.
+3. Clique em "Adicionar propriedade".
+4. Escolha a opção "Prefixo da URL" e digite: `https://jessicagilrs100-blip.github.io/cosmicai.github.io/`.
 
-### Passo 2: Verificar Propriedade
+### Passo 2: Confirmar que o Site é Seu
 
-Você pode verificar a propriedade de várias formas:
+Existem várias formas de provar ao Google que você é o dono do site:
 
-- **Meta tag HTML**: Copie a meta tag fornecida e adicione ao `<head>` do seu index.html
-- **Arquivo HTML**: Baixe o arquivo e coloque na raiz do seu site
-- **Google Analytics**: Se já tem GA4 configurado, pode usar para verificação
+- **Tag HTML**: O Google fornecerá uma linha de código para você colocar no `<head>` do seu arquivo `index.html`.
+- **Arquivo HTML**: Você baixa um arquivo pequeno e o coloca na pasta principal do seu site no GitHub.
+- **Google Analytics**: Se o seu Analytics já estiver funcionando, a verificação pode ser automática.
 
-### Passo 3: Enviar Sitemap
+### Passo 3: Enviar o Mapa do Site (Sitemap)
 
-1. No Search Console, vá para "Sitemaps"
-2. Clique em "Adicionar novo sitemap"
-3. Digite: `sitemap.xml`
-4. O Google começará a rastrear suas páginas
+1. No menu lateral do Search Console, clique em "Sitemaps".
+2. No campo "Adicionar um novo sitemap", digite apenas: `sitemap.xml`.
+3. Clique em "Enviar". O Google agora começará a ler todas as suas páginas.
 
-### Passo 4: Verificar Indexação
+## 3. Como se Inscrever no Google AdSense
 
-1. Vá para "Cobertura" para ver quais páginas foram indexadas
-2. Corrija qualquer erro que aparecer
-3. Solicite indexação para URLs específicas se necessário
+O AdSense é o programa que permite exibir anúncios e ganhar dinheiro com o seu site.
 
-## 3. Submissão no Google AdSense
+### Passo 1: Criar sua Conta
 
-O Google AdSense é o programa de monetização de anúncios do Google.
+1. Acesse o site do [Google AdSense](https://www.google.com/adsense/).
+2. Clique em "Começar agora".
+3. Use sua conta do Google para fazer o cadastro e preencha seus dados de pagamento e contato.
 
-### Passo 1: Criar Conta Google AdSense
+### Passo 2: Adicionar o Site para Análise
 
-1. Acesse https://www.google.com/adsense/
-2. Clique em "Comece agora"
-3. Faça login com sua conta Google (ou crie uma)
-4. Preencha as informações pessoais e de contato
+1. Informe a URL do seu site: `https://jessicagilrs100-blip.github.io/cosmicai.github.io/`.
+2. Escolha o idioma principal como Português (Brasil).
+3. Leia e aceite os termos de serviço do programa.
 
-### Passo 2: Adicionar Seu Site
+### Passo 3: Verificar o Código do AdSense
 
-1. Insira sua URL: `https://jessicagilrs100-blip.github.io/cosmicai.github.io/`
-2. Selecione o idioma: Português (Brasil)
-3. Aceite os termos de serviço
-
-### Passo 3: Adicionar Código AdSense
-
-O código já está adicionado ao seu site! Mas você pode verificar:
+Eu já inseri o código necessário no seu site, mas você pode conferir se ele aparece assim no topo do seu arquivo HTML:
 
 ```html
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4896859041377751" crossorigin="anonymous"></script>
 ```
 
-### Passo 4: Aguardar Aprovação
+### Passo 4: O Período de Espera
 
-- O Google levará de 2 a 3 semanas para revisar seu site
-- Você receberá um email quando a decisão for tomada
-- Se aprovado, você pode começar a ganhar com anúncios
-- Se rejeitado, o Google informará os motivos
+- O Google levará cerca de **2 a 3 semanas** para revisar manualmente o seu site.
+- Você receberá um e-mail avisando se foi aprovado ou se precisa fazer algum ajuste.
+- Se não for aprovado de primeira, não se preocupe! O Google dirá exatamente o que precisa ser melhorado.
 
-### Dicas para Aprovação
+## 4. Configuração no Google AdMob
 
-- Mantenha o conteúdo original e de qualidade
-- Não coloque muitos anúncios na página
-- Evite conteúdo que viole políticas (violência, conteúdo adulto, etc.)
-- Não clique em seus próprios anúncios
-- Não use bots para gerar tráfego
-- Tenha uma política de privacidade clara
+O AdMob é focado em monetização para aplicativos, mas também pode ser integrado a experiências web.
 
-## 4. Submissão no Google AdMob
+### Passo 1: Cadastro no AdMob
 
-O Google AdMob é para aplicativos móveis, mas também funciona com sites.
+1. Acesse o [Google AdMob](https://admob.google.com/).
+2. Faça login e complete as informações do seu perfil.
 
-### Passo 1: Criar Conta AdMob
+### Passo 2: Adicionar o Projeto
 
-1. Acesse https://admob.google.com/
-2. Clique em "Comece agora"
-3. Faça login com sua conta Google
-4. Preencha as informações
+1. Vá em "Aplicativos" > "Adicionar aplicativo".
+2. Selecione a plataforma "Web".
+3. Dê o nome de "CosmicAI" e escolha a categoria que melhor se encaixa (ex: Entretenimento).
 
-### Passo 2: Adicionar Aplicativo/Site
+### Passo 3: Criar Blocos de Anúncios
 
-1. Clique em "Aplicativos" > "Adicionar aplicativo"
-2. Escolha "Web" (para site)
-3. Digite o nome: "CosmicAI"
-4. Selecione a categoria: "Entretenimento"
+1. Clique em "Unidades de anúncios" e escolha o formato "Banner" ou "Display".
+2. O sistema gerará um código. Esse código deve ser colocado onde você deseja que os anúncios apareçam no site.
 
-### Passo 3: Configurar Unidades de Anúncios
+## 5. Dicas de Ouro para ser Aprovado
 
-1. Clique em "Unidades de anúncios" > "Novo"
-2. Escolha o tipo: "Display" (recomendado)
-3. Configure o tamanho dos anúncios
-4. Copie o código fornecido
+### Qualidade do Conteúdo
+O Google adora sites que trazem informações novas. Tente escrever pequenos textos originais sobre os signos ou previsões astrológicas.
 
-### Passo 4: Implementar Anúncios
+### Experiência do Usuário
+Certifique-se de que o site carrega rápido e que os botões são fáceis de clicar no celular.
 
-Adicione o código fornecido ao seu site. Já temos anúncios responsivos configurados!
+### Honestidade e Transparência
+Nunca tente enganar o sistema. Não peça para amigos clicarem nos anúncios e não use programas para gerar visitas falsas. O Google descobre e pode banir sua conta permanentemente.
 
-### Passo 5: Aguardar Aprovação
-
-- Similar ao AdSense, leva 2-3 semanas
-- O Google verificará se seu site segue as políticas
-- Você receberá um email com o resultado
-
-## 5. Otimizações Recomendadas
-
-### Para SEO
-
-- Adicione mais conteúdo de qualidade ao site
-- Use palavras-chave relevantes
-- Crie links internos entre páginas
-- Otimize as imagens (redimensione e comprima)
-- Melhore a velocidade de carregamento
-
-### Para Anúncios
-
-- Coloque anúncios em locais estratégicos
-- Use diferentes tamanhos de anúncios
-- Teste diferentes posições
-- Monitore o desempenho dos anúncios
-- Otimize com base nos dados
-
-### Para Segurança
-
-- Mantenha o site atualizado
-- Use HTTPS (já ativado no GitHub Pages)
-- Proteja contra malware
-- Faça backup regular
-- Monitore atividades suspeitas
-
-## 6. Monitoramento e Manutenção
+## 6. Como Acompanhar seu Sucesso
 
 ### Google Analytics
+Use para ver quantas pessoas visitam seu site por dia, de onde elas vêm e quanto tempo ficam navegando.
 
-Você já tem GA4 configurado! Monitore:
+### Painel do AdSense
+Lá você verá quanto dinheiro está ganhando, quais anúncios rendem mais e como está o desempenho geral.
 
-- Visitantes únicos
-- Tempo de permanência
-- Taxa de rejeição
-- Páginas mais visitadas
-- Origem do tráfego
-
-### Google AdSense
-
-Acompanhe:
-
-- Impressões de anúncios
-- Cliques em anúncios
-- Receita gerada
-- CTR (taxa de cliques)
-- RPM (receita por mil impressões)
-
-### Google Search Console
-
-Verifique:
-
-- Posição média nos resultados
-- Cliques e impressões
-- Erros de rastreamento
-- Cobertura de indexação
-- Performance do site
-
-## 7. Troubleshooting
-
-### Site não é aprovado no AdSense
-
-**Possíveis causas:**
-- Conteúdo insuficiente (menos de 300 palavras)
-- Conteúdo duplicado de outros sites
-- Conteúdo proibido (violência, conteúdo adulto, etc.)
-- Muitos anúncios na página
-- Tráfego suspeito
-
-**Soluções:**
-- Adicione mais conteúdo original
-- Remova conteúdo duplicado
-- Revise as políticas do Google
-- Reduza o número de anúncios
-- Aguarde e resubmita após 30 dias
-
-### Anúncios não aparecem
-
-**Possíveis causas:**
-- Código AdSense não está correto
-- Bloqueador de anúncios ativado
-- Site ainda não foi aprovado
-- Erro de configuração
-
-**Soluções:**
-- Verifique o código AdSense
-- Teste em navegador sem extensões
-- Aguarde aprovação
-- Verifique a configuração no AdSense
-
-### Baixa receita de anúncios
-
-**Possíveis causas:**
-- Pouco tráfego no site
-- Posicionamento ruim dos anúncios
-- Tipo de anúncio inadequado
-- Audiência de baixo valor
-
-**Soluções:**
-- Aumente o tráfego do site
-- Teste diferentes posições de anúncios
-- Experimente diferentes tipos de anúncios
-- Melhore a qualidade do conteúdo
-
-## 8. Recursos Úteis
-
-| Recurso | URL |
-|---------|-----|
-| Google AdSense | https://www.google.com/adsense/ |
-| Google AdMob | https://admob.google.com/ |
-| Google Search Console | https://search.google.com/search-console/ |
-| Google Analytics | https://analytics.google.com/ |
-| Políticas do Google | https://support.google.com/adsense/answer/1348695 |
-| Centro de Ajuda AdSense | https://support.google.com/adsense |
-| Centro de Ajuda AdMob | https://support.google.com/admob |
+### Search Console
+Verifique se o seu site está aparecendo nas buscas do Google e se existem erros que impedem as pessoas de te encontrarem.
 
 ---
 
 **Última atualização**: 03 de Maio de 2026
-
-**Status**: ✅ Site Pronto para Submissão
+**Status do Projeto**: ✅ Documentação e Site 100% em Português e prontos para envio!
