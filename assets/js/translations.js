@@ -1,6 +1,7 @@
 const translations = {
     "pt-BR": {
         "title": "CosmicAI - Horóscopo Grátis com IA | Previsões Personalizadas 2026",
+        "meta_desc": "Descubra seu horóscopo gratuito com Inteligência Artificial. Previsões personalizadas, mapa astral e insights astrológicos exclusivos para o seu futuro em 2026.",
         "nav_features": "Recursos",
         "nav_open_horoscope": "Abrir Horóscopo",
         "hero_badge": "Elegância & Tecnologia",
@@ -20,6 +21,7 @@ const translations = {
     },
     "en": {
         "title": "CosmicAI - Free AI Horoscope | Personalized Predictions 2026",
+        "meta_desc": "Discover your free horoscope with Artificial Intelligence. Personalized predictions, birth charts, and exclusive astrological insights for your future in 2026.",
         "nav_features": "Features",
         "nav_open_horoscope": "Open Horoscope",
         "hero_badge": "Elegance & Technology",
@@ -39,6 +41,7 @@ const translations = {
     },
     "es": {
         "title": "CosmicAI - Horóscopo Gratis con IA | Predicciones Personalizadas 2026",
+        "meta_desc": "Descubre tu horóscopo gratuito con Inteligencia Artificial. Predicciones personalizadas, carta natal e información astrológica exclusiva para tu futuro en 2026.",
         "nav_features": "Recursos",
         "nav_open_horoscope": "Abrir Horóscopo",
         "hero_badge": "Elegancia & Tecnología",

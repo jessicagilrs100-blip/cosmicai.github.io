@@ -3,6 +3,12 @@ function updateContent(lang) {
     
     // Update Title
     document.title = translation.title;
+
+    // Update Meta Description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription && translation.meta_desc) {
+        metaDescription.setAttribute('content', translation.meta_desc);
+    }
     
     // Update elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
