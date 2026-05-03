@@ -139,10 +139,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('../img/hero-bg-new.jpg') no-repeat center center;
+    background: url('../img/hero-desktop-viral.png') no-repeat center center;
     background-size: cover;
     text-align: center;
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        background: url('../img/hero-mobile-viral.png') no-repeat center center;
+        background-size: cover;
+    }
 }
 
 .hero::after {
@@ -159,19 +166,12 @@ body {
 .hero .container {
     position: relative;
     z-index: 10;
+    display: none; /* Escondendo o texto sobreposto pois a imagem já contém o texto viral */
 }
 
 /* Background Zodiac Wheel - Minimalist Outline */
 .bg-zodiac-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120vh;
-    height: 120vh;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.1; /* Very subtle */
+    display: none; /* Removendo para não interferir na nova capa viral */
 }
 
 .bg-zodiac-wheel {
