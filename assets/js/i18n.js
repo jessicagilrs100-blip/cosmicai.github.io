@@ -1,58 +1,39 @@
-function updateContent(lang) {
-    const translation = translations[lang] || translations['pt-BR'];
-    
-    // Update Title
-    document.title = translation.title;
-
-    // Update Meta Description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription && translation.meta_desc) {
-        metaDescription.setAttribute('content', translation.meta_desc);
-    }
-
-    // Update Meta Keywords
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords && translation.meta_keywords) {
-        metaKeywords.setAttribute('content', translation.meta_keywords);
-    }
-    
-    // Update elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        
-        if (translation[key]) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = translation[key];
-            } else {
-                element.innerHTML = translation[key];
-            }
+function updateLanguage(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
         }
     });
 
-    // Update HTML lang attribute
-    document.documentElement.lang = lang;
-    
-    // Save preference
-    localStorage.setItem('preferred-lang', lang);
-}
-
-function initLanguage() {
-    const savedLang = localStorage.getItem('preferred-lang');
-    const browserLang = navigator.language.split('-')[0];
-    const defaultLang = savedLang || (translations[navigator.language] ? navigator.language : (translations[browserLang] ? browserLang : 'pt-BR'));
-    
-    updateContent(defaultLang);
-    
-    // Expose updateContent globally
-    window.updateContent = updateContent;
-
-    // Add event listeners to language selectors
-    document.querySelectorAll('.lang-select').forEach(select => {
-        select.value = defaultLang;
-        select.addEventListener('change', (e) => {
-            updateContent(e.target.value);
-        });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            el.setAttribute('placeholder', translations[lang][key]);
+        }
     });
+
+    // Update meta tags
+    if (translations[lang]) {
+        document.title = translations[lang].site_title;
+        document.querySelector('meta[name="description"]')?.setAttribute('content', translations[lang].site_description);
+        document.querySelector('meta[name="keywords"]')?.setAttribute('content', translations[lang].meta_keywords);
+    }
+
+    localStorage.setItem('preferred-language', lang);
+    document.documentElement.lang = lang;
 }
 
-document.addEventListener('DOMContentLoaded', initLanguage);
+document.getElementById('language-select').addEventListener('change', (e) => {
+    updateLanguage(e.target.value);
+});
+
+// Initial load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('preferred-language') || 'pt-BR';
+    const select = document.getElementById('language-select');
+    if (select) {
+        select.value = savedLang;
+        updateLanguage(savedLang);
+    }
+});

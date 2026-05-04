@@ -3,139 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- ========== PRIMARY META TAGS ========== -->
-    <title data-i18n="title">CosmicAI - Horóscopo com IA | Previsões Astrológicas de Luxo</title>
-    <meta name="description" content="Descubra seu horóscopo com Inteligência Artificial. Previsões astrológicas personalizadas, mapa astral exclusivo e insights do universo. 100% gratuito e seguro.">
-    <meta name="keywords" data-i18n="meta_keywords" content="horóscopo com ia, inteligência artificial astrologia, previsões ia, cosmicai, horóscopo personalizado, mapa astral ia, signos zodíaco ia">
-    <meta name="author" content="CosmicAI">
-    <meta name="theme-color" content="#020617">
-    <link rel="canonical" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/">
-
-    <!-- ========== HREFLANG ========== -->
-    <link rel="alternate" hreflang="pt-BR" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/">
-    <link rel="alternate" hreflang="en" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/">
-    <link rel="alternate" hreflang="es" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/">
-    <link rel="alternate" hreflang="x-default" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/">
-
-    <!-- ========== FONTS ========== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- ========== STYLESHEETS ========== -->
+    <title data-i18n="site_title">CosmicAI - Horóscopo com IA</title>
+    <meta name="description" data-i18n="site_description" content="Insights astrológicos personalizados com Inteligência Artificial.">
+    <meta name="keywords" data-i18n="meta_keywords" content="horóscopo, astrologia, ia, signos, destino">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/ai-chat.css">
-
-    <!-- ========== SCRIPTS ========== -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4896859041377751" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    <!-- ========== NAVIGATION ========== -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="/" class="logo">CosmicAI</a>
-            </div>
+    <header>
+        <nav>
+            <div class="logo">COSMICAI</div>
             <div class="nav-links">
-                <a href="#features" data-i18n="nav_features">Recursos</a>
+                <a href="index.html" data-i18n="nav_home">Início</a>
                 <a href="trends.html" data-i18n="nav_trends">Tendências</a>
-                <select class="lang-select" aria-label="Selecionar Idioma">
+                <select id="language-select">
                     <option value="pt-BR">PT</option>
-                    <option value="en">EN</option>
-                    <option value="es">ES</option>
+                    <option value="en-US">EN</option>
+                    <option value="es-ES">ES</option>
                 </select>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- ========== HERO SECTION (RESTAURADA) ========== -->
-    <a href="trends.html" style="text-decoration: none;">
+    <main>
         <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="visually-hidden">CosmicAI - Horóscopo com Inteligência Artificial</h1>
-                    <div class="cta-buttons">
-                        <span class="btn btn-large" data-i18n="hero_cta">Acessar Horóscopo</span>
-                    </div>
-                </div>
+            <h1 data-i18n="hero_title">Descubra seu Destino com IA</h1>
+            <p data-i18n="hero_subtitle">Conecte-se com o cosmos através da nossa inteligência artificial astrológica.</p>
+        </section>
+
+        <section class="chat-container">
+            <div id="chat-messages">
+                <div class="message bot" data-i18n="bot_welcome">Olá! Sou sua guia estelar. Como posso ajudar hoje?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Pergunte às estrelas..." data-i18n-placeholder="chat_placeholder">
+                <button id="send-btn">➔</button>
             </div>
         </section>
-    </a>
+    </main>
 
-    <!-- ========== ADSENSE TOP ========== -->
-    <div class="adsense-container">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-4896859041377751"
-             data-ad-slot="auto"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <!-- ========== AI CHAT PREVIEW ========== -->
-    <section class="ai-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-i18n="ai_section_title">Pergunte à Inteligência Cósmica</h2>
-                <p data-i18n="ai_section_subtitle">Sua guia estelar está pronta para responder qualquer dúvida sobre seu signo ou destino.</p>
-            </div>
-            <div class="ai-chat-section">
-                <div id="chat-messages" class="chat-messages">
-                    <div class="chat-message bot-message">
-                        <p data-i18n="chat_welcome">Olá! Sou o Assistente Cósmico. Faça qualquer pergunta sobre astrologia, horóscopo ou seu destino. ✨</p>
-                    </div>
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" id="chat-input" class="chat-input" data-i18n="ai_chat_placeholder" placeholder="Ex: Como será meu dia no amor?">
-                    <button id="send-btn" class="send-btn" data-i18n="ai_send">Enviar</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== FEATURES SECTION ========== -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2 data-i18n="features_title">A Experiência CosmicAI</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <span class="icon">🧠</span>
-                    <h3 data-i18n="feature_1_title">Inteligência Pura</h3>
-                    <p data-i18n="feature_1_desc">Algoritmos de IA que interpretam constelações com precisão milimétrica para você.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">✨</span>
-                    <h3 data-i18n="feature_2_title">Exclusividade Total</h3>
-                    <p data-i18n="feature_2_desc">Cada previsão é única, baseada no seu mapa astral pessoal e no tempo presente.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">💎</span>
-                    <h3 data-i18n="feature_3_title">Design Imersivo</h3>
-                    <p data-i18n="feature_3_desc">Uma interface limpa e luxuosa para que sua jornada astral seja verdadeiramente inspiradora.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== FOOTER ========== -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="privacy-policy.html" data-i18n="footer_privacy">Política de Privacidade</a>
-                <span class="footer-separator">·</span>
-                <a href="terms-of-use.html" data-i18n="footer_terms">Termos de Uso</a>
-            </div>
-            <p class="footer-copy" data-i18n="footer_rights">© 2026 CosmicAI. Todos os direitos reservados.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 CosmicAI. <a href="privacy-policy.html" data-i18n="footer_privacy">Privacidade</a> | <a href="terms-of-use.html" data-i18n="footer_terms">Termos</a></p>
     </footer>
 
-    <!-- ========== SCRIPTS ========== -->
     <script src="assets/js/translations.js"></script>
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/ai-chat.js"></script>
-    <script src="assets/js/script.js"></script>
 </body>
 </html>
