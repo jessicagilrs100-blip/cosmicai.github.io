@@ -4,10 +4,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            // Usar window.scrollTo em vez de scrollIntoView para maior controle
-            const targetPosition = target.offsetTop;
             window.scrollTo({
-                top: targetPosition,
+                top: target.offsetTop,
                 behavior: 'smooth'
             });
         }
@@ -65,7 +63,7 @@ function trackEvent(eventName, eventData) {
 }
 
 // Track CTA clicks
-document.querySelectorAll('.btn-large, .btn-primary, .hero-link').forEach(btn => {
+document.querySelectorAll('.btn-large, .btn-primary').forEach(btn => {
     btn.addEventListener('click', () => {
         trackEvent('CTA_Click', {
             buttonText: btn.textContent,
@@ -74,72 +72,66 @@ document.querySelectorAll('.btn-large, .btn-primary, .hero-link').forEach(btn =>
     });
 });
 
-// Funcao robusta para fazer scroll para a secao de features
-function scrollToFeatures() {
+// Setup hero section para ser clicavel
+function setupHeroClick() {
+    const heroSection = document.getElementById('hero-section');
     const featuresSection = document.getElementById('features');
-    if (featuresSection) {
-        // Usar window.scrollTo para maior controle e garantir que role completamente
-        const targetPosition = featuresSection.offsetTop;
+    
+    if (heroSection && featuresSection) {
+        // Funcao para fazer scroll
+        function performScroll() {
+            const targetTop = featuresSection.offsetTop;
+            
+            // Usar window.scrollTo com behavior smooth
+            window.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
+            });
+            
+            // Fallback: se nao funcionar, fazer scroll direto apos 500ms
+            setTimeout(function() {
+                if (window.pageYOffset < targetTop - 50) {
+                    window.scrollTo(0, targetTop);
+                }
+            }, 500);
+        }
         
-        // Usar requestAnimationFrame para garantir que o scroll seja suave e completo
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
+        // Listener de clique simples
+        heroSection.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            performScroll();
+            trackEvent('Hero_Click', { action: 'scroll_to_features' });
         });
         
-        // Fallback: se o scroll suave nao funcionar, usar scroll direto apos 1 segundo
-        setTimeout(function() {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll < targetPosition - 10) {
-                window.scrollTo(0, targetPosition);
+        // Listener de toque para mobile
+        heroSection.addEventListener('touchstart', function(e) {
+            // Apenas marcar que houve toque
+            this.dataset.touched = 'true';
+        }, false);
+        
+        heroSection.addEventListener('touchend', function(e) {
+            if (this.dataset.touched === 'true') {
+                e.preventDefault();
+                e.stopPropagation();
+                performScroll();
+                trackEvent('Hero_Touch', { action: 'scroll_to_features' });
+                this.dataset.touched = 'false';
             }
-        }, 1000);
-    }
-}
-
-// Garantir que o link hero funcione perfeitamente
-function setupHeroLink() {
-    const heroLink = document.getElementById('hero-link');
-    if (heroLink) {
-        // Garantir que o link seja clicavel
-        heroLink.style.pointerEvents = 'auto';
-        heroLink.style.cursor = 'pointer';
-        
-        // Remover o href padrao para evitar comportamento de link tradicional
-        heroLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Chamar a funcao de scroll robusta
-            scrollToFeatures();
-        });
-        
-        // Adicionar listener de toque para garantir resposta no mobile
-        heroLink.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Chamar a funcao de scroll robusta
-            scrollToFeatures();
         }, false);
         
-        // Adicionar listener de touchstart para evitar comportamento padrao
-        heroLink.addEventListener('touchstart', function(e) {
-            // Nao fazer nada, apenas evitar comportamento padrao
-        }, false);
-        
-        console.log('Hero link setup complete - entire cover is clickable and scrolls to features');
+        console.log('Hero click setup complete');
     }
 }
 
 // Executar quando DOM estiver pronto
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupHeroLink);
+    document.addEventListener('DOMContentLoaded', setupHeroClick);
 } else {
-    setupHeroLink();
+    setupHeroClick();
 }
 
-// Garantir que o link seja configurado apos qualquer carregamento dinamico
-window.addEventListener('load', setupHeroLink);
+// Garantir que seja configurado apos load completo
+window.addEventListener('load', setupHeroClick);
 
 console.log('CosmicAI Landing Page loaded successfully! ✨');
