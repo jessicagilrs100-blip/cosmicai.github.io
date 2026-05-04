@@ -89,10 +89,10 @@ class AIChatBotPermanent {
         try {
             // Call the Vercel Serverless Function
             // Chama o endpoint tRPC que agora está configurado no servidor real do Vercel
-            const response = await fetch('https://cosmic-ai-horoscope.vercel.app/api/trpc/chat.send?batch=1', {
+            const response = await fetch('https://cosmic-ai-horoscope.vercel.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ "0": { "json": { "message": userMessage } } })
+                body: JSON.stringify({ message: userMessage })
             });
 
             if (!response.ok) {
@@ -101,7 +101,7 @@ class AIChatBotPermanent {
 
             const data = await response.json();
             // O tRPC retorna os dados em um formato específico [ { result: { data: { json: { message: "..." } } } } ]
-            return data[0]?.result?.data?.json?.message || "Desculpe, as estrelas estão em silêncio agora.";
+            return data.message || "Desculpe, as estrelas estão em silêncio agora.";
         } catch (error) {
             console.error("API Error:", error);
             return this.generateFallbackResponse();
