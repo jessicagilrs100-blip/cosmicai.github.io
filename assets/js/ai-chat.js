@@ -19,7 +19,7 @@ class AIChatBot {
         if (document.getElementById('ai-chat-container')) return;
 
         const chatHTML = `
-            <div id="ai-chat-container" class="ai-chat-container hidden" style="z-index: 9999;">
+            <div id="ai-chat-container" class="ai-chat-container hidden">
                 <div class="ai-chat-header">
                     <h3 data-i18n="chat_title">🌟 Assistente Cósmico</h3>
                     <button id="close-chat" class="close-chat-btn">✕</button>
@@ -34,7 +34,7 @@ class AIChatBot {
                     <button id="send-btn" class="send-btn">→</button>
                 </div>
             </div>
-            <button id="open-chat" class="open-chat-btn" style="z-index: 9998;">💬</button>
+            <button id="open-chat" class="open-chat-btn">💬</button>
         `;
 
         document.body.insertAdjacentHTML('beforeend', chatHTML);
@@ -59,14 +59,8 @@ class AIChatBot {
         closeBtn.addEventListener('click', () => this.toggleChat());
         openBtn.addEventListener('click', () => this.toggleChat());
 
-        // Hero CTA button listener
-        const heroBtn = document.getElementById('hero-cta-btn');
-        if (heroBtn) {
-            heroBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.openChat();
-            });
-        }
+        // Hero CTA button: removido para não abrir o chat
+        // O botão agora usa o comportamento padrão de scroll para #features
     }
 
     openChat() {
