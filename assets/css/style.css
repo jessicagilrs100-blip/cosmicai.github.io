@@ -521,9 +521,33 @@ body {
         display: none;
     }
     
+    .hero .container {
+        padding-top: 0 !important;
+        align-items: flex-end !important;
+        padding-bottom: 60px !important;
+    }
+    
     .cta-buttons {
         flex-direction: column;
         gap: 1.5rem;
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    .btn-large {
+        width: 100% !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: transparent !important;
+        padding: 60px 0 !important;
+        font-size: 0 !important;
+        pointer-events: auto !important;
+    }
+    
+    .btn-large:hover {
+        background: transparent !important;
+        color: transparent !important;
     }
     
     .bg-zodiac-container {
