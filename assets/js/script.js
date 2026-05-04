@@ -43,9 +43,13 @@ window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 100) {
-        navbar.style.boxShadow = '0 10px 30px rgba(147, 51, 234, 0.1)';
+        if (navbar) {
+            navbar.style.boxShadow = '0 10px 30px rgba(147, 51, 234, 0.1)';
+        }
     } else {
-        navbar.style.boxShadow = 'none';
+        if (navbar) {
+            navbar.style.boxShadow = 'none';
+        }
     }
     
     lastScroll = currentScroll;
@@ -59,7 +63,7 @@ function trackEvent(eventName, eventData) {
 }
 
 // Track CTA clicks
-document.querySelectorAll('.btn-large, .btn-primary').forEach(btn => {
+document.querySelectorAll('.btn-large, .btn-primary, .hero-link').forEach(btn => {
     btn.addEventListener('click', () => {
         trackEvent('CTA_Click', {
             buttonText: btn.textContent,
@@ -68,55 +72,52 @@ document.querySelectorAll('.btn-large, .btn-primary').forEach(btn => {
     });
 });
 
-// Garantir que o botao da capa funcione no mobile
-function setupHeroButton() {
-    const heroBtn = document.getElementById('hero-cta-btn');
-    if (heroBtn) {
-        // Remover qualquer listener anterior
-        heroBtn.onclick = null;
+// Garantir que o link hero funcione perfeitamente
+function setupHeroLink() {
+    const heroLink = document.getElementById('hero-link');
+    if (heroLink) {
+        // Garantir que o link seja clicavel
+        heroLink.style.pointerEvents = 'auto';
+        heroLink.style.cursor = 'pointer';
         
-        // Funcao para fazer o scroll
-        function performScroll() {
-            const featuresSection = document.getElementById('features');
-            if (featuresSection) {
-                // Usar setTimeout para garantir que o navegador processe
-                setTimeout(function() {
-                    featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            }
-        }
-        
-        // Adicionar listener de clique
-        heroBtn.addEventListener('click', function(e) {
+        // Adicionar listener de clique para scroll suave
+        heroLink.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            performScroll();
+            
+            const featuresSection = document.getElementById('features');
+            if (featuresSection) {
+                setTimeout(function() {
+                    featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            }
         });
         
         // Adicionar listener de toque para garantir resposta no mobile
-        heroBtn.addEventListener('touchend', function(e) {
+        heroLink.addEventListener('touchend', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            performScroll();
+            
+            const featuresSection = document.getElementById('features');
+            if (featuresSection) {
+                setTimeout(function() {
+                    featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            }
         }, false);
         
-        // Adicionar listener de touchstart para feedback visual
-        heroBtn.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-        }, false);
-        
-        console.log('Hero button setup complete - touch and click enabled');
+        console.log('Hero link setup complete - entire cover is clickable');
     }
 }
 
 // Executar quando DOM estiver pronto
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupHeroButton);
+    document.addEventListener('DOMContentLoaded', setupHeroLink);
 } else {
-    setupHeroButton();
+    setupHeroLink();
 }
 
-// Garantir que o botao seja configurado apos qualquer carregamento dinamico
-window.addEventListener('load', setupHeroButton);
+// Garantir que o link seja configurado apos qualquer carregamento dinamico
+window.addEventListener('load', setupHeroLink);
 
 console.log('CosmicAI Landing Page loaded successfully! ✨');
