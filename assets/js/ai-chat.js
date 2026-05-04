@@ -11,6 +11,7 @@ class AIChatBot {
         // Create chat container
         this.createChatUI();
         this.attachEventListeners();
+        // NÃO abrir o chat automaticamente - deixar fechado até o usuário clicar
     }
 
     createChatUI() {
@@ -18,7 +19,7 @@ class AIChatBot {
         if (document.getElementById('ai-chat-container')) return;
 
         const chatHTML = `
-            <div id="ai-chat-container" class="ai-chat-container hidden">
+            <div id="ai-chat-container" class="ai-chat-container hidden" style="z-index: 9999;">
                 <div class="ai-chat-header">
                     <h3 data-i18n="chat_title">🌟 Assistente Cósmico</h3>
                     <button id="close-chat" class="close-chat-btn">✕</button>
@@ -33,7 +34,7 @@ class AIChatBot {
                     <button id="send-btn" class="send-btn">→</button>
                 </div>
             </div>
-            <button id="open-chat" class="open-chat-btn">💬</button>
+            <button id="open-chat" class="open-chat-btn" style="z-index: 9998;">💬</button>
         `;
 
         document.body.insertAdjacentHTML('beforeend', chatHTML);
