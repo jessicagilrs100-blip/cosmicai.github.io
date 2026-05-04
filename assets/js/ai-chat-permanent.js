@@ -88,7 +88,7 @@ class AIChatBotPermanent {
     async getAIResponse(userMessage) {
         try {
             // Call the Vercel Serverless Function
-            const response = await fetch('/api/chat', {
+            const response = await fetch('https://cosmic-ai-horoscope.vercel.app/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
