@@ -17,7 +17,10 @@ const translations = {
         "feature_3_desc": "Uma interface limpa e imersiva para que sua jornada astral seja inspiradora.",
         "footer_rights": "© 2026 CosmicAI. Todos os direitos reservados.",
         "footer_privacy": "Política de Privacidade",
-        "footer_terms": "Termos de Uso"
+        "footer_terms": "Termos de Uso",
+        "chat_title": "🌟 Assistente Cósmico",
+        "chat_welcome": "Olá! Sou o Assistente Cósmico. Faça qualquer pergunta sobre astrologia, horóscopo ou seu destino. ✨",
+        "chat_placeholder": "Faça uma pergunta..."
     },
     "en": {
         "title": "CosmicAI - Free AI Horoscope | Personalized Predictions 2026",
@@ -37,7 +40,10 @@ const translations = {
         "feature_3_desc": "A clean and immersive interface so that your astral journey is inspiring.",
         "footer_rights": "© 2026 CosmicAI. All rights reserved.",
         "footer_privacy": "Privacy Policy",
-        "footer_terms": "Terms of Use"
+        "footer_terms": "Terms of Use",
+        "chat_title": "🌟 Cosmic Assistant",
+        "chat_welcome": "Hello! I'm the Cosmic Assistant. Ask me any questions about astrology, horoscope or your destiny. ✨",
+        "chat_placeholder": "Ask a question..."
     },
     "es": {
         "title": "CosmicAI - Horóscopo Gratis con IA | Predicciones Personalizadas 2026",
@@ -57,6 +63,9 @@ const translations = {
         "feature_3_desc": "Una interfaz limpia e inmersiva para que tu viaje astral sea inspirador.",
         "footer_rights": "© 2026 CosmicAI. Todos los derechos reservados.",
         "footer_privacy": "Política de Privacidad",
-        "footer_terms": "Términos de Uso"
+        "footer_terms": "Términos de Uso",
+        "chat_title": "🌟 Asistente Cósmico",
+        "chat_welcome": "¡Hola! Soy el Asistente Cósmico. Hazme cualquier pregunta sobre astrología, horóscopo o tu destino. ✨",
+        "chat_placeholder": "Haz una pregunta..."
     }
 };
