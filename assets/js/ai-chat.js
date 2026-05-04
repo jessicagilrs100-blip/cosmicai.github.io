@@ -116,9 +116,13 @@ class AIChatBot {
             pisces: ["peixes"],
         };
 
+        // Normalizar a mensagem para remover acentos e facilitar a busca
+        const normalizedMessage = message.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
         for (const sign in signs) {
             for (const keyword of signs[sign]) {
-                if (message.includes(keyword)) {
+                const normalizedKeyword = keyword.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+                if (normalizedMessage.includes(normalizedKeyword)) {
                     return sign;
                 }
             }
@@ -128,28 +132,31 @@ class AIChatBot {
 
     detectTopic(message) {
         const topics = {
-            love: ["amor", "relacionamento", "paixão", "namoro"],
-            career: ["trabalho", "carreira", "emprego", "dinheiro", "finanças", "negócios"],
-            health: ["saúde", "bem-estar", "energia"],
-            luck: ["sorte", "oportunidade", "destino"],
-            today: ["hoje", "dia", "agora"],
+            love: ["amor", "relacionamento", "paixao", "namoro", "sentimental", "casamento"],
+            career: ["trabalho", "carreira", "emprego", "dinheiro", "financas", "negocios", "profissional", "sucesso"],
+            health: ["saude", "bem-estar", "energia", "disposicao", "fisico", "mental"],
+            luck: ["sorte", "oportunidade", "destino", "azar"],
+            today: ["hoje", "dia", "agora", "neste momento"],
             week: ["semana"],
-            month: ["mês", "mes"],
+            month: ["mes"],
             year: ["ano"],
-            compatibility: ["compatibilidade", "combinar"],
-            astralMap: ["mapa astral"],
+            compatibility: ["compatibilidade", "combinar", "combina", "parceiro", "parceira"],
+            astralMap: ["mapa astral", "mapa natal", "posicao dos planetas"],
             moon: ["lua"],
-            mercury: ["mercúrio", "mercurio"],
-            venus: ["vênus", "venus"],
+            mercury: ["mercurio"],
+            venus: ["venus"],
             mars: ["marte"],
-            jupiter: ["júpiter", "jupiter"],
+            jupiter: ["jupiter"],
             saturn: ["saturno"],
-            general: ["previsão", "horóscopo", "o que me espera"],
+            general: ["previsao", "horoscopo", "o que me espera", "futuro", "conselho"],
         };
+
+        const normalizedMessage = message.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
         for (const topic in topics) {
             for (const keyword of topics[topic]) {
-                if (message.includes(keyword)) {
+                const normalizedKeyword = keyword.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+                if (normalizedMessage.includes(normalizedKeyword)) {
                     return topic;
                 }
             }
