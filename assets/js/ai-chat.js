@@ -1,118 +1,57 @@
 /**
- * CosmicAI - Core AI Chat System (Rebuilt)
- * Handles communication with the backend AI proxy
+ * COSMIC AI - NEW CLEAN FRONTEND
+ * Simple and direct chat interface
  */
 
-class CosmicAIChat {
-    constructor() {
-        this.chatMessages = document.getElementById('chat-messages');
-        this.chatInput = document.getElementById('chat-input');
-        this.sendBtn = document.getElementById('send-btn');
-        this.sessionId = this.generateSessionId();
-        this.isTyping = false;
-
-        this.init();
-    }
-
-    generateSessionId() {
-        return 'cosmic_' + Math.random().toString(36).substr(2, 9) + Date.now();
-    }
-
+const CosmicChat = {
     init() {
-        if (!this.chatInput || !this.sendBtn) return;
-
-        this.sendBtn.addEventListener('click', () => this.handleSend());
-        this.chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.handleSend();
-        });
-
-        console.log('CosmicAI: Chat System Initialized');
-    }
-
-    async handleSend() {
-        const text = this.chatInput.value.trim();
-        if (!text || this.isTyping) return;
-
-        this.addMessage(text, 'user');
-        this.chatInput.value = '';
+        this.container = document.getElementById('chat-messages');
+        this.input = document.getElementById('chat-input');
+        this.button = document.getElementById('send-btn');
         
-        await this.getAIResponse(text);
-    }
+        if (this.button) {
+            this.button.onclick = () => this.send();
+            this.input.onkeypress = (e) => e.key === 'Enter' && this.send();
+        }
+    },
 
-    addMessage(text, sender) {
-        if (!this.chatMessages) return;
+    async send() {
+        const text = this.input.value.trim();
+        if (!text) return;
 
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `chat-message ${sender}-message`;
+        this.addMsg(text, 'user');
+        this.input.value = '';
         
-        const p = document.createElement('p');
-        p.textContent = text;
-        msgDiv.appendChild(p);
-
-        this.chatMessages.appendChild(msgDiv);
-        this.scrollToBottom();
-        return msgDiv;
-    }
-
-    showTyping() {
-        this.isTyping = true;
-        const typingDiv = document.createElement('div');
-        typingDiv.className = 'chat-message bot-message typing-indicator-container';
-        typingDiv.id = 'typing-indicator';
-        typingDiv.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
-        this.chatMessages.appendChild(typingDiv);
-        this.scrollToBottom();
-    }
-
-    hideTyping() {
-        this.isTyping = false;
-        const indicator = document.getElementById('typing-indicator');
-        if (indicator) indicator.remove();
-    }
-
-    scrollToBottom() {
-        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-    }
-
-    async getAIResponse(message) {
-        this.showTyping();
+        // Loading state
+        const loading = this.addMsg('...', 'bot');
 
         try {
-            const response = await fetch('/api/chat', {
+            const res = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    message: message,
-                    sessionId: this.sessionId,
+                body: JSON.stringify({ 
+                    message: text,
                     lang: document.documentElement.lang || 'pt-BR'
                 })
             });
-
-            if (!response.ok) throw new Error('Network response was not ok');
-
-            const data = await response.json();
-            this.hideTyping();
-            this.addMessage(data.message || this.getErrorMessage(), 'bot');
-
-        } catch (error) {
-            console.error('CosmicAI Error:', error);
-            this.hideTyping();
-            this.addMessage(this.getErrorMessage(), 'bot');
+            
+            const data = await res.json();
+            loading.querySelector('p').textContent = data.message || 'Error';
+        } catch (e) {
+            loading.querySelector('p').textContent = 'Connection failed.';
         }
-    }
+        
+        this.container.scrollTop = this.container.scrollHeight;
+    },
 
-    getErrorMessage() {
-        const lang = document.documentElement.lang || 'pt-BR';
-        const errors = {
-            'pt-BR': 'As estrelas estão em silêncio no momento. Tente novamente em breve. ✨',
-            'en': 'The stars are silent at the moment. Please try again soon. ✨',
-            'es': 'Las estrellas están en silencio en este momento. Por favor, inténtalo de novo pronto. ✨'
-        };
-        return errors[lang] || errors['pt-BR'];
+    addMsg(text, type) {
+        const div = document.createElement('div');
+        div.className = `chat-message ${type}-message`;
+        div.innerHTML = `<p>${text}</p>`;
+        this.container.appendChild(div);
+        this.container.scrollTop = this.container.scrollHeight;
+        return div;
     }
-}
+};
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    window.cosmicAI = new CosmicAIChat();
-});
+document.addEventListener('DOMContentLoaded', () => CosmicChat.init());
