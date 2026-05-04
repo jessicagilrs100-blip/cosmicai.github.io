@@ -1,19 +1,14 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "env": {
-    "OPENAI_API_KEY": "@openai_api_key"
-  },
   "functions": {
-    "api/**/*.js": {
+    "api/*.js": {
       "runtime": "nodejs20.x"
     }
   },
   "rewrites": [
     {
-      "source": "/api/chat",
-      "destination": "/api/chat.js"
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     }
   ]
 }
