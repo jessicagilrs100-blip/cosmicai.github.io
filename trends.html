@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tendências Cósmicas | CosmicAI</title>
+    <meta name="description" content="Tendências cósmicas de hoje. Atualizações diárias sobre astrologia, signos, fases lunares e previsões astrológicas com IA.">
+    <meta name="keywords" content="tendências cósmicas, previsão do dia, astrologia diária, fases lunares, signos do dia, horóscopo diário">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/trends.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .trends-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+            padding: 2rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .trends-main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .trends-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ai-chat-box {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.15) 0%, rgba(96, 165, 250, 0.15) 100%);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            position: sticky;
+            top: 2rem;
+            max-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-header {
+            background: linear-gradient(135deg, #9333ea 0%, #60a5fa 100%);
+            padding: 0.75rem;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .ai-messages {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(2, 6, 23, 0.5);
+            border-radius: 8px;
+            min-height: 200px;
+        }
+
+        .ai-message {
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .ai-message.user {
+            background: rgba(147, 51, 234, 0.3);
+            color: #e0e7ff;
+            margin-left: 0.5rem;
+            text-align: right;
+        }
+
+        .ai-message.bot {
+            background: rgba(96, 165, 250, 0.2);
+            color: #bfdbfe;
+        }
+
+        .ai-input-group {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .ai-input {
+            flex: 1;
+            background: rgba(147, 51, 234, 0.1);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 4px;
+            padding: 0.5rem;
+            color: #e0e7ff;
+            font-size: 0.8rem;
+        }
+
+        .ai-input::placeholder {
+            color: #a78bfa;
+        }
+
+        .ai-input:focus {
+            outline: none;
+            border-color: #9333ea;
+        }
+
+        .ai-send {
+            background: linear-gradient(135deg, #9333ea 0%, #60a5fa 100%);
+            border: none;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .ai-send:hover {
+            opacity: 0.9;
+        }
+
+        .trend-card {
+            background: rgba(147, 51, 234, 0.1);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: #e0e7ff;
+        }
+
+        .trend-card h3 {
+            color: #c4b5fd;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .trend-card p {
+            color: #bfdbfe;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1024px) {
+            .trends-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-chat-box {
+                position: static;
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/" class="logo">CosmicAI</a>
+            </div>
+            <div class="nav-links">
+                <a href="/" aria-label="Voltar para página inicial">← Voltar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="trends-wrapper">
+            <!-- Left: Trends Content -->
+            <div class="trends-main">
+                <h1 style="color: #e0e7ff; font-size: 2rem; margin-bottom: 1rem;">✨ Tendências Cósmicas de Hoje</h1>
+                <p style="color: #bfdbfe; margin-bottom: 2rem;">Atualizações diárias sobre a energia cósmica, fases lunares e influências astrológicas.</p>
+
+                <div id="trends-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div style="text-align: center; color: #a78bfa; padding: 2rem; grid-column: 1/-1;">Carregando tendências...</div>
+                </div>
+
+                <p style="text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 2rem;">Última atualização: <span id="last-update">--:--</span></p>
+            </div>
+
+            <!-- Right: AI Chat Sidebar -->
+            <aside class="trends-sidebar">
+                <div class="ai-chat-box">
+                    <div class="ai-header">🌟 IA Cósmica</div>
+                    <div class="ai-messages" id="ai-messages">
+                        <div class="ai-message bot">Olá! Faça perguntas sobre astrologia. ✨</div>
+                    </div>
+                    <div class="ai-input-group">
+                        <input 
+                            type="text" 
+                            id="ai-input" 
+                            class="ai-input" 
+                            placeholder="Pergunta..."
+                            aria-label="Digite sua pergunta"
+                        >
+                        <button id="ai-send" class="ai-send">→</button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Política de Privacidade</a>
+                <span class="footer-separator">·</span>
+                <a href="terms-of-use.html">Termos de Uso</a>
+                <span class="footer-separator">·</span>
+                <a href="/">Página Inicial</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 CosmicAI. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Gerar tendências do dia
+        function generateTrendsForToday() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+            
+            const trends = [
+                {
+                    title: "🌙 Fase Lunar Atual",
+                    content: ["Lua Nova", "Lua Crescente", "Lua Cheia", "Lua Minguante"][dayOfYear % 4]
+                },
+                {
+                    title: "⚡ Energia Cósmica",
+                    content: ["Alta", "Moderada", "Baixa", "Muito Alta"][dayOfYear % 4]
+                },
+                {
+                    title: "♈ Signo em Destaque",
+                    content: ["Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário", "Capricórnio", "Aquário", "Peixes"][dayOfYear % 12]
+                },
+                {
+                    title: "💫 Conselho das Estrelas",
+                    content: ["Hoje é dia de reflexão e renovação.", "A energia favorece novos começos.", "Confie em sua intuição.", "Seja paciente com os processos."][dayOfYear % 4]
+                },
+                {
+                    title: "🪐 Planeta Influente",
+                    content: ["Mercúrio", "Vênus", "Marte", "Júpiter", "Saturno"][dayOfYear % 5]
+                }
+            ];
+
+            const container = document.getElementById('trends-content');
+            container.innerHTML = trends.map(trend => `
+                <div class="trend-card">
+                    <h3>${trend.title}</h3>
+                    <p>${trend.content}</p>
+                </div>
+            `).join('');
+
+            const now = new Date();
+            document.getElementById('last-update').textContent = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // AI Chat
+        class AIChat {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                const sendBtn = document.getElementById('ai-send');
+                const input = document.getElementById('ai-input');
+
+                if (sendBtn) sendBtn.addEventListener('click', () => this.sendMessage());
+                if (input) input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.sendMessage();
+                });
+            }
+
+            async sendMessage() {
+                const input = document.getElementById('ai-input');
+                if (!input) return;
+
+                const message = input.value.trim();
+                if (!message) return;
+
+                this.addMessage(message, 'user');
+                input.value = '';
+
+                try {
+                    const response = await this.getResponse(message);
+                    this.addMessage(response, 'bot');
+                } catch (error) {
+                    this.addMessage('Erro ao responder.', 'bot');
+                }
+            }
+
+            addMessage(text, sender) {
+                const container = document.getElementById('ai-messages');
+                if (!container) return;
+
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `ai-message ${sender}`;
+                messageDiv.textContent = text;
+                container.appendChild(messageDiv);
+                container.scrollTop = container.scrollHeight;
+            }
+
+            async getResponse(message) {
+                const lower = message.toLowerCase();
+                
+                const responses = {
+                    'áries': 'Áries: coragem e liderança!',
+                    'touro': 'Touro: estabilidade e conforto.',
+                    'gêmeos': 'Gêmeos: comunicação e inteligência.',
+                    'câncer': 'Câncer: emoção e intuição.',
+                    'leão': 'Leão: criatividade e autoexpressão.',
+                    'virgem': 'Virgem: análise e organização.',
+                    'libra': 'Libra: equilíbrio e harmonia.',
+                    'escorpião': 'Escorpião: transformação profunda.',
+                    'sagitário': 'Sagitário: aventura e expansão.',
+                    'capricórnio': 'Capricórnio: responsabilidade.',
+                    'aquário': 'Aquário: inovação.',
+                    'peixes': 'Peixes: espiritualidade.',
+                    'lua': 'A Lua influencia nossas emoções.',
+                    'mercúrio': 'Mercúrio rege comunicação.',
+                    'vênus': 'Vênus rege amor e beleza.',
+                    'marte': 'Marte rege ação e coragem.',
+                };
+
+                for (const [key, value] of Object.entries(responses)) {
+                    if (lower.includes(key)) {
+                        return value;
+                    }
+                }
+
+                return 'Pergunta interessante! 🌙 Pergunte sobre signos, planetas ou fases lunares.';
+            }
+        }
+
+        // Initialize
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                generateTrendsForToday();
+                new AIChat();
+            });
+        } else {
+            generateTrendsForToday();
+            new AIChat();
+        }
+    </script>
+
+</body>
+</html>
