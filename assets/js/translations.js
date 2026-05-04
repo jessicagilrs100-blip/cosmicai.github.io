@@ -2,6 +2,7 @@ const translations = {
     "pt-BR": {
         "title": "CosmicAI - Horóscopo com IA | Previsões Astrológicas de Luxo",
         "meta_desc": "Descubra seu horóscopo com Inteligência Artificial. Previsões personalizadas, mapa astral exclusivo e insights do universo. 100% gratuito e seguro.",
+        "meta_keywords": "horóscopo com ia, inteligência artificial astrologia, previsões ia, cosmicai, horóscopo personalizado, mapa astral ia, signos zodíaco ia",
         "nav_features": "Recursos",
         "nav_trends": "Tendências",
         "nav_open_horoscope": "Abrir Horóscopo",
@@ -39,6 +40,7 @@ const translations = {
     "en": {
         "title": "CosmicAI - AI Horoscope | Luxury Astrological Predictions",
         "meta_desc": "Discover your horoscope with Artificial Intelligence. Personalized predictions, exclusive birth charts, and cosmic insights. 100% free and secure.",
+        "meta_keywords": "ai horoscope, artificial intelligence astrology, ai predictions, cosmicai, personalized horoscope, ai birth chart, zodiac signs ai",
         "nav_features": "Features",
         "nav_trends": "Trends",
         "nav_open_horoscope": "Open Horoscope",
@@ -76,6 +78,7 @@ const translations = {
     "es": {
         "title": "CosmicAI - Horóscopo con IA | Predicciones Astrológicas de Lujo",
         "meta_desc": "Descubre tu horóscopo con Inteligencia Artificial. Predicciones personalizadas, carta natal exclusiva e información del cosmos. 100% gratis y seguro.",
+        "meta_keywords": "horóscopo con ia, inteligencia artificial astrología, predicciones ia, cosmicai, horóscopo personalizado, carta natal ia, signos del zodiaco ia",
         "nav_features": "Recursos",
         "nav_trends": "Tendencias",
         "nav_open_horoscope": "Abrir Horóscopo",
@@ -98,7 +101,7 @@ const translations = {
         "ai_send": "Enviar",
         
         "footer_rights": "© 2026 CosmicAI. Todos los derechos reservados.",
-        "footer_privacy": "Política de Privacidad",
+        "footer_privacy": "Política de Privacidade",
         "footer_terms": "Términos de Uso",
         "chat_title": "🌟 Asistente Cósmico",
         "chat_welcome": "¡Hola! Soy el Asistente Cósmico. Hazme cualquier pregunta sobre astrología, horóscopo o tu destino. ✨",

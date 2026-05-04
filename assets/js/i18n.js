@@ -9,6 +9,12 @@ function updateContent(lang) {
     if (metaDescription && translation.meta_desc) {
         metaDescription.setAttribute('content', translation.meta_desc);
     }
+
+    // Update Meta Keywords
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords && translation.meta_keywords) {
+        metaKeywords.setAttribute('content', translation.meta_keywords);
+    }
     
     // Update elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
