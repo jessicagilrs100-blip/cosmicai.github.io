@@ -22,7 +22,7 @@ export default async function handler(req, res) {
                 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
             },
             body: JSON.stringify({
-                model: 'gpt-4o',
+                model: 'gpt-4o-mini', // Modelo muito mais barato e rápido
                 messages: [
                     { 
                         role: 'system', 
@@ -34,7 +34,8 @@ export default async function handler(req, res) {
                     },
                     { role: 'user', content: message }
                 ],
-                temperature: 0.7
+                temperature: 0.7,
+                max_tokens: 500 // Limite para evitar consumo excessivo
             })
         });
 
