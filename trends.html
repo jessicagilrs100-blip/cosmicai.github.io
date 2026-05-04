@@ -137,6 +137,8 @@
             margin-top: 2rem;
             color: #e0e7ff;
             display: none;
+            max-height: 600px;
+            overflow-y: auto;
         }
 
         .prediction-result.active {
@@ -153,6 +155,10 @@
             color: #bfdbfe;
             line-height: 1.8;
             margin-bottom: 0.75rem;
+        }
+
+        .prediction-result strong {
+            color: #c4b5fd;
         }
 
         @media (max-width: 768px) {
@@ -199,7 +205,7 @@
         <!-- Prediction Result -->
         <div class="prediction-result" id="prediction-result">
             <h3 id="result-title"></h3>
-            <p id="result-content"></p>
+            <div id="result-content"></div>
         </div>
 
         <!-- Features Section -->
@@ -258,20 +264,176 @@
             { emoji: '♓', name: 'Peixes', dates: '19 Fev - 20 Mar' }
         ];
 
-        const predictions = {
-            'Áries': 'Hoje é um dia de energia e ação! Você está em seu melhor. Use essa força para conquistar seus objetivos. Em amor, a paixão está em alta. No trabalho, seus esforços serão reconhecidos.',
-            'Touro': 'Estabilidade e segurança marcam este dia. É hora de consolidar seus planos. Financeiramente, boas notícias estão chegando. Aproveite para descansar e se cuidar.',
-            'Gêmeos': 'Comunicação é sua força hoje! Suas palavras têm poder especial. Novos contatos e oportunidades surgem. Seja criativo e não tenha medo de se expressar.',
-            'Câncer': 'Suas emoções estão em sintonia com o universo. É um bom dia para reflexão e autoconhecimento. Cuide de si mesmo e de quem ama. Intuição em alta.',
-            'Leão': 'Você brilha especialmente hoje! Sua criatividade está no auge. É hora de se destacar e mostrar seu talento. Oportunidades profissionais surgem. Confie em você!',
-            'Virgem': 'Análise e organização são suas aliadas. Detalhes importantes não escapam de você. É um bom dia para resolver pendências. Trabalho em foco.',
-            'Libra': 'Equilíbrio e harmonia marcam este dia. Relacionamentos ganham leveza. É hora de buscar paz interior. Decisões importantes tendem a sair bem.',
-            'Escorpião': 'Transformação está no ar! Você sente uma força interna poderosa. É hora de deixar ir o que não serve mais. Mudanças positivas chegam.',
-            'Sagitário': 'Aventura e expansão chamam por você! Novas experiências estão à vista. Viagens ou mudanças de perspectiva favorecem. Otimismo em alta.',
-            'Capricórnio': 'Responsabilidade e determinação guiam seu caminho. Seus esforços trazem resultados sólidos. Investimentos em longo prazo favorecem. Paciência é sua virtude.',
-            'Aquário': 'Inovação e criatividade explodem em você! Ideias revolucionárias surgem. É hora de pensar diferente. Amizades ganham importância especial.',
-            'Peixes': 'Espiritualidade e intuição estão em destaque. Seus sonhos têm mensagens importantes. Criatividade artística floresce. Conexão com o universo forte.'
+        const zodiacData = {
+            'Áries': {
+                colors: ['Vermelho', 'Dourado', 'Laranja'],
+                luckyNumbers: [7, 9, 1],
+                element: 'Fogo',
+                ruler: 'Marte',
+                compatibility: ['Leão', 'Sagitário'],
+                traits: ['Corajoso', 'Apaixonado', 'Impulsivo', 'Líder']
+            },
+            'Touro': {
+                colors: ['Verde', 'Rosa', 'Marrom'],
+                luckyNumbers: [2, 6, 4],
+                element: 'Terra',
+                ruler: 'Vênus',
+                compatibility: ['Virgem', 'Capricórnio'],
+                traits: ['Estável', 'Sensual', 'Teimoso', 'Confiável']
+            },
+            'Gêmeos': {
+                colors: ['Amarelo', 'Prata', 'Verde'],
+                luckyNumbers: [3, 5, 6],
+                element: 'Ar',
+                ruler: 'Mercúrio',
+                compatibility: ['Libra', 'Aquário'],
+                traits: ['Comunicativo', 'Curioso', 'Adaptável', 'Inteligente']
+            },
+            'Câncer': {
+                colors: ['Prata', 'Branco', 'Azul'],
+                luckyNumbers: [2, 7, 9],
+                element: 'Água',
+                ruler: 'Lua',
+                compatibility: ['Escorpião', 'Peixes'],
+                traits: ['Emocional', 'Protetor', 'Intuitivo', 'Leal']
+            },
+            'Leão': {
+                colors: ['Ouro', 'Laranja', 'Vermelho'],
+                luckyNumbers: [1, 5, 9],
+                element: 'Fogo',
+                ruler: 'Sol',
+                compatibility: ['Áries', 'Sagitário'],
+                traits: ['Criativo', 'Generoso', 'Orgulhoso', 'Confiante']
+            },
+            'Virgem': {
+                colors: ['Verde', 'Azul', 'Bege'],
+                luckyNumbers: [5, 8, 3],
+                element: 'Terra',
+                ruler: 'Mercúrio',
+                compatibility: ['Touro', 'Capricórnio'],
+                traits: ['Analítico', 'Prático', 'Perfeccionista', 'Modesto']
+            },
+            'Libra': {
+                colors: ['Rosa', 'Azul Claro', 'Verde'],
+                luckyNumbers: [6, 9, 3],
+                element: 'Ar',
+                ruler: 'Vênus',
+                compatibility: ['Gêmeos', 'Aquário'],
+                traits: ['Equilibrado', 'Justo', 'Social', 'Indeciso']
+            },
+            'Escorpião': {
+                colors: ['Vermelho Escuro', 'Preto', 'Roxo'],
+                luckyNumbers: [8, 4, 2],
+                element: 'Água',
+                ruler: 'Plutão',
+                compatibility: ['Câncer', 'Peixes'],
+                traits: ['Intenso', 'Misterioso', 'Apaixonado', 'Controlador']
+            },
+            'Sagitário': {
+                colors: ['Roxo', 'Azul', 'Laranja'],
+                luckyNumbers: [3, 9, 6],
+                element: 'Fogo',
+                ruler: 'Júpiter',
+                compatibility: ['Áries', 'Leão'],
+                traits: ['Aventureiro', 'Otimista', 'Honesto', 'Impaciente']
+            },
+            'Capricórnio': {
+                colors: ['Marrom', 'Cinza', 'Preto'],
+                luckyNumbers: [1, 8, 4],
+                element: 'Terra',
+                ruler: 'Saturno',
+                compatibility: ['Touro', 'Virgem'],
+                traits: ['Responsável', 'Ambicioso', 'Disciplinado', 'Pessimista']
+            },
+            'Aquário': {
+                colors: ['Azul Elétrico', 'Prata', 'Roxo'],
+                luckyNumbers: [4, 7, 11],
+                element: 'Ar',
+                ruler: 'Urano',
+                compatibility: ['Gêmeos', 'Libra'],
+                traits: ['Inovador', 'Humanitário', 'Excêntrico', 'Distante']
+            },
+            'Peixes': {
+                colors: ['Turquesa', 'Roxo', 'Verde Água'],
+                luckyNumbers: [3, 7, 12],
+                element: 'Água',
+                ruler: 'Netuno',
+                compatibility: ['Câncer', 'Escorpião'],
+                traits: ['Espiritual', 'Criativo', 'Compassivo', 'Escapista']
+            }
         };
+
+        // Gerar previsões diferentes por dia
+        function generateDailyPrediction(signName, dayOffset = 0) {
+            const today = new Date();
+            today.setDate(today.getDate() + dayOffset);
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+            
+            const data = zodiacData[signName];
+            
+            // Variar previsões por dia
+            const predictions = [
+                `Dia de grande energia! ${signName} está em seu melhor. Use essa força para conquistar seus objetivos. Em amor, a paixão está em alta. No trabalho, seus esforços serão reconhecidos.`,
+                `Estabilidade marca este dia. É hora de consolidar seus planos. Financeiramente, boas notícias estão chegando. Aproveite para descansar e se cuidar.`,
+                `Comunicação é sua força! Suas palavras têm poder especial. Novos contatos e oportunidades surgem. Seja criativo e não tenha medo de se expressar.`,
+                `Suas emoções estão em sintonia com o universo. É um bom dia para reflexão e autoconhecimento. Cuide de si mesmo e de quem ama. Intuição em alta.`,
+                `Você brilha especialmente! Sua criatividade está no auge. É hora de se destacar e mostrar seu talento. Oportunidades profissionais surgem. Confie em você!`,
+                `Análise e organização são suas aliadas. Detalhes importantes não escapam de você. É um bom dia para resolver pendências. Trabalho em foco.`,
+                `Equilíbrio e harmonia marcam este dia. Relacionamentos ganham leveza. É hora de buscar paz interior. Decisões importantes tendem a sair bem.`
+            ];
+            
+            const loveAspects = [
+                'Intensidade e paixão em alta',
+                'Relacionamentos ganham profundidade',
+                'Conversas importantes fluem naturalmente',
+                'Momento de intimidade e conexão profunda',
+                'Você é irresistível hoje',
+                'Demonstre cuidado com ações',
+                'Harmonia e romance em destaque'
+            ];
+            
+            const workAspects = [
+                'Excelente dia para liderança e negociações',
+                'Dia produtivo para projetos de longo prazo',
+                'Ótimo para negociações e apresentações',
+                'Dia introspectivo, bom para planejamento',
+                'Dia perfeito para liderança e criatividade',
+                'Excelente para resolver problemas complexos',
+                'Dia ideal para parcerias e colaborações'
+            ];
+            
+            const financeAspects = [
+                'Investimentos podem render bem',
+                'Ganhos estáveis e seguros',
+                'Oportunidades de renda extra',
+                'Economize e proteja seus recursos',
+                'Generosidade traz retorno',
+                'Atenção aos detalhes traz economia',
+                'Bom para negociações'
+            ];
+            
+            const prediction = predictions[dayOfYear % predictions.length];
+            const loveAspect = loveAspects[dayOfYear % loveAspects.length];
+            const workAspect = workAspects[dayOfYear % workAspects.length];
+            const financeAspect = financeAspects[dayOfYear % financeAspects.length];
+            
+            const luckyColor = data.colors[dayOfYear % data.colors.length];
+            const luckyNumber = data.luckyNumbers[dayOfYear % data.luckyNumbers.length];
+            const compatSign = data.compatibility[dayOfYear % data.compatibility.length];
+            
+            return `
+                <p><strong>📅 Previsão do Dia:</strong> ${prediction}</p>
+                <p><strong>🍀 Número da Sorte:</strong> ${luckyNumber}</p>
+                <p><strong>🎨 Cor do Dia:</strong> ${luckyColor}</p>
+                <p><strong>🌟 Elemento:</strong> ${data.element}</p>
+                <p><strong>🪐 Planeta Regente:</strong> ${data.ruler}</p>
+                <p><strong>💕 Compatibilidade Especial:</strong> ${compatSign}</p>
+                <p><strong>💼 Trabalho:</strong> ${workAspect}</p>
+                <p><strong>💰 Finanças:</strong> ${financeAspect}</p>
+                <p><strong>❤️ Amor:</strong> ${loveAspect}</p>
+                <p><strong>✨ Traços:</strong> ${data.traits.join(', ')}</p>
+            `;
+        }
 
         // Generate zodiac buttons
         function initZodiacGrid() {
@@ -296,7 +458,7 @@
             const contentDiv = document.getElementById('result-content');
 
             titleDiv.textContent = `Previsão para ${signName}`;
-            contentDiv.textContent = predictions[signName] || 'Previsão indisponível.';
+            contentDiv.innerHTML = generateDailyPrediction(signName);
             resultDiv.classList.add('active');
 
             // Scroll to result
