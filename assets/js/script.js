@@ -1,4 +1,20 @@
-// Smooth scrolling for navigation links
+// Funcao global para fazer scroll para features
+function scrollToFeatures(event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+        window.scrollTo({
+            top: featuresSection.offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Smooth scrolling para links de navegacao
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -12,7 +28,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add scroll animation to elements
+// Animacoes ao scroll
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -27,7 +43,6 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe feature cards and other elements
 document.querySelectorAll('.feature-card, .step, .faq-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
@@ -35,7 +50,7 @@ document.querySelectorAll('.feature-card, .step, .faq-item').forEach(el => {
     observer.observe(el);
 });
 
-// Navbar scroll effect
+// Efeito de scroll na navbar
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
@@ -55,7 +70,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Analytics tracking (basic)
+// Analytics
 function trackEvent(eventName, eventData) {
     if (window.umami) {
         window.umami.track(eventName, eventData);
@@ -71,67 +86,5 @@ document.querySelectorAll('.btn-large, .btn-primary').forEach(btn => {
         });
     });
 });
-
-// Setup hero section para ser clicavel
-function setupHeroClick() {
-    const heroSection = document.getElementById('hero-section');
-    const featuresSection = document.getElementById('features');
-    
-    if (heroSection && featuresSection) {
-        // Funcao para fazer scroll
-        function performScroll() {
-            const targetTop = featuresSection.offsetTop;
-            
-            // Usar window.scrollTo com behavior smooth
-            window.scrollTo({
-                top: targetTop,
-                behavior: 'smooth'
-            });
-            
-            // Fallback: se nao funcionar, fazer scroll direto apos 500ms
-            setTimeout(function() {
-                if (window.pageYOffset < targetTop - 50) {
-                    window.scrollTo(0, targetTop);
-                }
-            }, 500);
-        }
-        
-        // Listener de clique simples
-        heroSection.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            performScroll();
-            trackEvent('Hero_Click', { action: 'scroll_to_features' });
-        });
-        
-        // Listener de toque para mobile
-        heroSection.addEventListener('touchstart', function(e) {
-            // Apenas marcar que houve toque
-            this.dataset.touched = 'true';
-        }, false);
-        
-        heroSection.addEventListener('touchend', function(e) {
-            if (this.dataset.touched === 'true') {
-                e.preventDefault();
-                e.stopPropagation();
-                performScroll();
-                trackEvent('Hero_Touch', { action: 'scroll_to_features' });
-                this.dataset.touched = 'false';
-            }
-        }, false);
-        
-        console.log('Hero click setup complete');
-    }
-}
-
-// Executar quando DOM estiver pronto
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupHeroClick);
-} else {
-    setupHeroClick();
-}
-
-// Garantir que seja configurado apos load completo
-window.addEventListener('load', setupHeroClick);
 
 console.log('CosmicAI Landing Page loaded successfully! ✨');
