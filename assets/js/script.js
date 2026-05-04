@@ -75,17 +75,15 @@ function setupHeroButton() {
         // Remover qualquer listener anterior
         heroBtn.onclick = null;
         
-        // Adicionar listener de clique
+        // Adicionar listener de clique direto no elemento
         heroBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation();
             
             const featuresSection = document.getElementById('features');
             if (featuresSection) {
                 featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            return false;
-        }, true);
+        });
         
         console.log('Hero button setup complete');
     }
