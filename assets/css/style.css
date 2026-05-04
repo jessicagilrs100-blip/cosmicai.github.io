@@ -561,19 +561,27 @@ body {
     }
     
     .btn-large {
-        width: 100% !important;
+        width: 100vw !important;
+        height: 200px !important;
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
         color: transparent !important;
-        padding: 150px 0 !important; /* Aumenta a área de clique para garantir o acesso */
+        padding: 0 !important;
         font-size: 0 !important;
         pointer-events: auto !important;
         text-indent: -9999px !important;
         overflow: hidden !important;
         display: block !important;
         position: relative !important;
-        z-index: 9999 !important; /* Garante que fique por cima de tudo */
+        z-index: 9999 !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        left: 50% !important;
+        right: 50% !important;
+        touch-action: manipulation !important; /* Garante resposta ao toque */
+        -webkit-user-select: none !important;
+        user-select: none !important;
     }
     
     .btn-large:hover {
