@@ -1,4 +1,4 @@
-// Funcao global para fazer scroll para features
+// Funcao global para fazer scroll DIRETO para features (sem animacao)
 function scrollToFeatures(event) {
     if (event) {
         event.preventDefault();
@@ -7,19 +7,18 @@ function scrollToFeatures(event) {
     
     const featuresSection = document.getElementById('features');
     if (featuresSection) {
-        window.scrollTo({
-            top: featuresSection.offsetTop,
-            behavior: 'smooth'
-        });
+        // Scroll DIRETO sem animacao
+        window.scrollTo(0, featuresSection.offsetTop);
     }
 }
 
-// Smooth scrolling para links de navegacao
+// Smooth scrolling para links de navegacao (com animacao)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
+            // Links de navegacao usam scroll suave
             window.scrollTo({
                 top: target.offsetTop,
                 behavior: 'smooth'
