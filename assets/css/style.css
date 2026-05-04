@@ -517,6 +517,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        display: none !important; /* Remove a barra de navegação no mobile para liberar espaço */
+    }
+    
     .nav-links {
         display: none;
     }
@@ -540,11 +544,14 @@ body {
         border: none !important;
         box-shadow: none !important;
         color: transparent !important;
-        padding: 80px 0 !important;
+        padding: 150px 0 !important; /* Aumenta a área de clique para garantir o acesso */
         font-size: 0 !important;
         pointer-events: auto !important;
-        text-indent: -9999px !important; /* Esconde qualquer texto residual */
+        text-indent: -9999px !important;
         overflow: hidden !important;
+        display: block !important;
+        position: relative !important;
+        z-index: 9999 !important; /* Garante que fique por cima de tudo */
     }
     
     .btn-large:hover {
