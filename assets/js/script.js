@@ -43,9 +43,13 @@ window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 100) {
-        navbar.style.boxShadow = '0 10px 30px rgba(147, 51, 234, 0.1)';
+        if (navbar) {
+            navbar.style.boxShadow = '0 10px 30px rgba(147, 51, 234, 0.1)';
+        }
     } else {
-        navbar.style.boxShadow = 'none';
+        if (navbar) {
+            navbar.style.boxShadow = 'none';
+        }
     }
     
     lastScroll = currentScroll;
@@ -66,6 +70,29 @@ document.querySelectorAll('.btn-large, .btn-primary').forEach(btn => {
             buttonClass: btn.className
         });
     });
+});
+
+// Hero CTA button: abrir o chat de IA
+document.addEventListener('DOMContentLoaded', function() {
+    const heroCTABtn = document.getElementById('hero-cta-btn');
+    if (heroCTABtn) {
+        heroCTABtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Abrir o chat de IA
+            if (window.chatBot && window.chatBot.openChat) {
+                window.chatBot.openChat();
+            } else {
+                // Se o chat ainda não foi inicializado, aguardar um pouco
+                setTimeout(function() {
+                    if (window.chatBot && window.chatBot.openChat) {
+                        window.chatBot.openChat();
+                    }
+                }, 500);
+            }
+        });
+    }
 });
 
 console.log('CosmicAI Landing Page loaded successfully! ✨');
