@@ -87,8 +87,8 @@ class AIChatBotManus {
 
     async getAIResponse(userMessage) {
         try {
-            // Usando o proxy local que vamos expor
-            const response = await fetch('https://3000-irxmwqoio83ruul6rzrl4-4f9e9250.us2.manus.computer/api/chat', {
+            // Usando o endpoint atualizado do servidor de IA
+            const response = await fetch('https://8000-iowkzk6h9u3qd8bi5x5ua-0cc9ef00.us2.manus.computer/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
