@@ -13,6 +13,11 @@ function updateContent(lang) {
     // Update elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
+        // Pular elementos da capa que devem permanecer ocultos
+        if (key === 'hero_title' || key === 'hero_description' || key === 'hero_badge') {
+            element.style.display = 'none';
+            return;
+        }
         if (translation[key]) {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translation[key];
