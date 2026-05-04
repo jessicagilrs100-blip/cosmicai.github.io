@@ -7,7 +7,7 @@ const translations = {
         "hero_badge": "",
         "hero_title": "",
         "hero_description": "",
-        "hero_cta": "",
+
         "features_title": "A Experiência CosmicAI",
         "feature_1_title": "Inteligência",
         "feature_1_desc": "Algoritmos de IA que interpretam constelações com precisão milimétrica para você.",
@@ -30,7 +30,7 @@ const translations = {
         "hero_badge": "",
         "hero_title": "",
         "hero_description": "",
-        "hero_cta": "",
+
         "features_title": "The CosmicAI Experience",
         "feature_1_title": "Intelligence",
         "feature_1_desc": "AI algorithms that interpret constellations with millimeter precision for you.",
@@ -53,7 +53,7 @@ const translations = {
         "hero_badge": "",
         "hero_title": "",
         "hero_description": "",
-        "hero_cta": "",
+
         "features_title": "La Experiencia CosmicAI",
         "feature_1_title": "Inteligencia",
         "feature_1_desc": "Algoritmos de IA que interpretan constelaciones con precisión milimétrica para ti.",

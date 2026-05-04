@@ -540,9 +540,11 @@ body {
         border: none !important;
         box-shadow: none !important;
         color: transparent !important;
-        padding: 60px 0 !important;
+        padding: 80px 0 !important;
         font-size: 0 !important;
         pointer-events: auto !important;
+        text-indent: -9999px !important; /* Esconde qualquer texto residual */
+        overflow: hidden !important;
     }
     
     .btn-large:hover {
