@@ -1,71 +1,60 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+// CosmicAI - Professional Scripts
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
-});
 
-// Add scroll animation to elements
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe feature cards and other elements
-document.querySelectorAll('.feature-card, .step, .faq-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
-
-// Navbar scroll effect
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.style.boxShadow = '0 10px 30px rgba(147, 51, 234, 0.1)';
-    } else {
-        navbar.style.boxShadow = 'none';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Analytics tracking (basic)
-function trackEvent(eventName, eventData) {
-    if (window.umami) {
-        window.umami.track(eventName, eventData);
-    }
-}
-
-// Track CTA clicks
-document.querySelectorAll('.btn-large, .btn-primary').forEach(btn => {
-    btn.addEventListener('click', () => {
-        trackEvent('CTA_Click', {
-            buttonText: btn.textContent,
-            buttonClass: btn.className
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
-});
 
-console.log('CosmicAI Landing Page loaded successfully! ✨');
+    // Reveal Animations on Scroll
+    const revealElements = document.querySelectorAll('.feature-card, .hero-content, .ai-chat-section');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        revealObserver.observe(el);
+    });
+
+    // CSS for revealed state
+    const style = document.createElement('style');
+    style.textContent = `
+        .revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        .navbar.scrolled {
+            background: rgba(2, 6, 23, 0.95) !important;
+            height: 70px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+    `;
+    document.head.appendChild(style);
+});

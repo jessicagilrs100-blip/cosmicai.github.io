@@ -13,16 +13,12 @@ function updateContent(lang) {
     // Update elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        // Pular elementos da capa que devem permanecer ocultos
-        if (key === 'hero_title' || key === 'hero_description' || key === 'hero_badge') {
-            element.style.display = 'none';
-            return;
-        }
+        
         if (translation[key]) {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translation[key];
             } else {
-                element.innerText = translation[key];
+                element.innerHTML = translation[key];
             }
         }
     });
@@ -41,10 +37,10 @@ function initLanguage() {
     
     updateContent(defaultLang);
     
-    // Expose updateContent globally so other scripts can trigger translation
+    // Expose updateContent globally
     window.updateContent = updateContent;
 
-    // Add event listeners to language selectors if they exist
+    // Add event listeners to language selectors
     document.querySelectorAll('.lang-select').forEach(select => {
         select.value = defaultLang;
         select.addEventListener('change', (e) => {

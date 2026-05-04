@@ -1,33 +1,14 @@
-# CosmicAI - robots.txt
-# Horóscopo com Inteligência Artificial | AI Horoscope | Horóscopo con IA
-
 User-agent: *
 Allow: /
-Disallow: /assets/
-Allow: /assets/css/
-Allow: /assets/img/
+Disallow: /api/
+Disallow: /node_modules/
 
 # Sitemaps
 Sitemap: https://jessicagilrs100-blip.github.io/cosmicai.github.io/sitemap.xml
 
-# Crawl-delay para bots respeitosos
-Crawl-delay: 1
-
-# Permitir todos os principais buscadores
-User-agent: Googlebot
+# AI Crawlers
+User-agent: GPTBot
 Allow: /
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
+User-agent: Google-Extended
 Allow: /
