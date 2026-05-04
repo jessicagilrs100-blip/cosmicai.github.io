@@ -116,7 +116,8 @@ body {
     border: 1px solid white;
     position: relative;
     z-index: 101;
-    pointer-events: auto;
+    pointer-events: auto !important;
+    cursor: pointer !important;
 }
 
 .btn-large:hover {
@@ -145,7 +146,8 @@ body {
     background: url('../img/hero-desktop-viral.png') no-repeat center center;
     background-size: cover;
     text-align: center;
-    overflow: hidden;
+    overflow: visible;
+    pointer-events: auto;
 }
 
 @media (max-width: 768px) {
@@ -164,6 +166,7 @@ body {
     height: 30vh;
     background: linear-gradient(to top, var(--darker-bg), transparent);
     z-index: 5;
+    pointer-events: none;
 }
 
 .hero .container {
@@ -232,6 +235,7 @@ body {
     align-items: center;
     position: relative;
     z-index: 100;
+    pointer-events: auto;
 }
 
 /* Features Section */

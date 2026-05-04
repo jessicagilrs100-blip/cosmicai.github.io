@@ -68,4 +68,34 @@ document.querySelectorAll('.btn-large, .btn-primary').forEach(btn => {
     });
 });
 
+// Garantir que o botao da capa funcione
+function setupHeroButton() {
+    const heroBtn = document.getElementById('hero-cta-btn');
+    if (heroBtn) {
+        // Remover qualquer listener anterior
+        heroBtn.onclick = null;
+        
+        // Adicionar listener de clique
+        heroBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const featuresSection = document.getElementById('features');
+            if (featuresSection) {
+                featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            return false;
+        }, true);
+        
+        console.log('Hero button setup complete');
+    }
+}
+
+// Executar quando DOM estiver pronto
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupHeroButton);
+} else {
+    setupHeroButton();
+}
+
 console.log('CosmicAI Landing Page loaded successfully! ✨');
