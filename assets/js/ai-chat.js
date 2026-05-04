@@ -48,6 +48,23 @@ class AIChatBot {
         });
         closeBtn.addEventListener('click', () => this.toggleChat());
         openBtn.addEventListener('click', () => this.toggleChat());
+
+        // Hero CTA button listener
+        const heroBtn = document.getElementById('hero-cta-btn');
+        if (heroBtn) {
+            heroBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openChat();
+            });
+        }
+    }
+
+    openChat() {
+        const container = document.getElementById('ai-chat-container');
+        const openBtn = document.getElementById('open-chat');
+        container.classList.remove('hidden');
+        openBtn.style.display = 'none';
+        document.getElementById('chat-input').focus();
     }
 
     toggleChat() {
