@@ -37,6 +37,12 @@ class AIChatBot {
         `;
 
         document.body.insertAdjacentHTML('beforeend', chatHTML);
+        
+        // Apply current translation to the newly created UI
+        if (window.updateContent) {
+            const currentLang = localStorage.getItem('preferred-lang') || 'pt-BR';
+            window.updateContent(currentLang);
+        }
     }
 
     attachEventListeners() {
@@ -65,16 +71,25 @@ class AIChatBot {
     openChat() {
         const container = document.getElementById('ai-chat-container');
         const openBtn = document.getElementById('open-chat');
-        container.classList.remove('hidden');
-        openBtn.style.display = 'none';
-        document.getElementById('chat-input').focus();
+        if (container) container.classList.remove('hidden');
+        if (openBtn) openBtn.classList.add('hidden');
+        const input = document.getElementById('chat-input');
+        if (input) input.focus();
     }
 
     toggleChat() {
         const container = document.getElementById('ai-chat-container');
         const openBtn = document.getElementById('open-chat');
-        container.classList.toggle('hidden');
-        openBtn.style.display = container.classList.contains('hidden') ? 'block' : 'none';
+        if (container) {
+            const isHidden = container.classList.toggle('hidden');
+            if (openBtn) {
+                if (isHidden) {
+                    openBtn.classList.remove('hidden');
+                } else {
+                    openBtn.classList.add('hidden');
+                }
+            }
+        }
     }
 
     async sendMessage() {

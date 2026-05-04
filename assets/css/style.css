@@ -166,7 +166,6 @@ body {
 .hero .container {
     position: relative;
     z-index: 10;
-    display: none; /* Escondendo o texto sobreposto pois a imagem já contém o texto viral */
 }
 
 /* Background Zodiac Wheel - Minimalist Outline */
@@ -294,7 +293,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.ai-chat-container.hidden {
+.ai-chat-container.hidden, .open-chat-btn.hidden {
     display: none;
 }
 

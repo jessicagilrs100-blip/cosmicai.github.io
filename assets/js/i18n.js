@@ -35,6 +35,9 @@ function initLanguage() {
     const defaultLang = savedLang || (translations[navigator.language] ? navigator.language : (translations[browserLang] ? browserLang : 'pt-BR'));
     
     updateContent(defaultLang);
+    
+    // Expose updateContent globally so other scripts can trigger translation
+    window.updateContent = updateContent;
 
     // Add event listeners to language selectors if they exist
     document.querySelectorAll('.lang-select').forEach(select => {
