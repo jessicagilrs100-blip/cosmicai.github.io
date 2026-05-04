@@ -14,8 +14,11 @@ class AIChatBot {
     }
 
     createChatUI() {
+        // Check if chat already exists
+        if (document.getElementById('ai-chat-container')) return;
+
         const chatHTML = `
-            <div id="ai-chat-container" class="ai-chat-container">
+            <div id="ai-chat-container" class="ai-chat-container hidden">
                 <div class="ai-chat-header">
                     <h3 data-i18n="chat_title">🌟 Assistente Cósmico</h3>
                     <button id="close-chat" class="close-chat-btn">✕</button>
@@ -26,11 +29,11 @@ class AIChatBot {
                     </div>
                 </div>
                 <div class="chat-input-area">
-                    <input type="text" id="chat-input" class="chat-input" placeholder="Faça uma pergunta..." data-i18n-placeholder="chat_placeholder">
+                    <input type="text" id="chat-input" class="chat-input" placeholder="Faça uma pergunta..." data-i18n="chat_input_placeholder">
                     <button id="send-btn" class="send-btn">→</button>
                 </div>
             </div>
-            <button id="open-chat" class="open-chat-btn" style="display: none;">💬</button>
+            <button id="open-chat" class="open-chat-btn">💬</button>
         `;
 
         document.body.insertAdjacentHTML('beforeend', chatHTML);
@@ -175,7 +178,15 @@ class AIChatBot {
     }
 }
 
-// Initialize chat when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    window.cosmicAIChat = new AIChatBot();
-});
+// Initialize chat
+function initAIChat() {
+    if (!window.cosmicAIChat) {
+        window.cosmicAIChat = new AIChatBot();
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAIChat);
+} else {
+    initAIChat();
+}

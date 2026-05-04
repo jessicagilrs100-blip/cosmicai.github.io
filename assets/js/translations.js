@@ -20,7 +20,7 @@ const translations = {
         "footer_terms": "Termos de Uso",
         "chat_title": "🌟 Assistente Cósmico",
         "chat_welcome": "Olá! Sou o Assistente Cósmico. Faça qualquer pergunta sobre astrologia, horóscopo ou seu destino. ✨",
-        "chat_placeholder": "Faça uma pergunta..."
+        "chat_input_placeholder": "Faça uma pergunta..."
     },
     "en": {
         "title": "CosmicAI - Free AI Horoscope | Personalized Predictions 2026",
@@ -43,7 +43,7 @@ const translations = {
         "footer_terms": "Terms of Use",
         "chat_title": "🌟 Cosmic Assistant",
         "chat_welcome": "Hello! I'm the Cosmic Assistant. Ask me any questions about astrology, horoscope or your destiny. ✨",
-        "chat_placeholder": "Ask a question..."
+        "chat_input_placeholder": "Ask a question..."
     },
     "es": {
         "title": "CosmicAI - Horóscopo Gratis con IA | Predicciones Personalizadas 2026",
@@ -66,6 +66,6 @@ const translations = {
         "footer_terms": "Términos de Uso",
         "chat_title": "🌟 Asistente Cósmico",
         "chat_welcome": "¡Hola! Soy el Asistente Cósmico. Hazme cualquier pregunta sobre astrología, horóscopo o tu destino. ✨",
-        "chat_placeholder": "Haz una pregunta..."
+        "chat_input_placeholder": "Haz una pregunta..."
     }
 };
