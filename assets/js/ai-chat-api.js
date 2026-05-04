@@ -15,13 +15,12 @@ class AIChatBotAPI {
 
     getAPIEndpoint() {
         // Em desenvolvimento, use localhost:8000
-        // Em produção, configure a URL do seu servidor
+        // Em produção, use a URL pública do servidor
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             return 'http://localhost:8000/api/chat';
         }
-        // Para produção, você pode usar um serviço como Vercel, Heroku, ou seu próprio servidor
-        // Configure a URL do seu servidor aqui
-        return window.location.origin + ':8000/api/chat';
+        // URL pública do servidor de IA
+        return 'https://8000-iowkzk6h9u3qd8bi5x5ua-0cc9ef00.us2.manus.computer/api/chat';
     }
 
     initChat() {
