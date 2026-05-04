@@ -4,6 +4,28 @@
     box-sizing: border-box;
 }
 
+/* Bloquear elementos de tradução do navegador */
+.goog-te-banner-frame,
+.goog-te-gadget,
+.goog-te-gadget-simple,
+.goog-te-menu-value,
+.goog-te-combo,
+[role="complementary"],
+.skiptranslate,
+.google-translate-element {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
 :root {
     --primary-purple: #a78bfa;
     --primary-blue: #60a5fa;
