@@ -26,7 +26,7 @@ const CosmicChat = {
         const loading = this.addMsg('...', 'bot');
 
         try {
-            const res = await fetch('/api/chat', {
+            const res = await fetch('https://cosmic-ai-horoscope.vercel.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
