@@ -4,9 +4,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            // Usar window.scrollTo em vez de scrollIntoView para maior controle
+            const targetPosition = target.offsetTop;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         }
     });
@@ -72,6 +74,29 @@ document.querySelectorAll('.btn-large, .btn-primary, .hero-link').forEach(btn =>
     });
 });
 
+// Funcao robusta para fazer scroll para a secao de features
+function scrollToFeatures() {
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+        // Usar window.scrollTo para maior controle e garantir que role completamente
+        const targetPosition = featuresSection.offsetTop;
+        
+        // Usar requestAnimationFrame para garantir que o scroll seja suave e completo
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Fallback: se o scroll suave nao funcionar, usar scroll direto apos 1 segundo
+        setTimeout(function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll < targetPosition - 10) {
+                window.scrollTo(0, targetPosition);
+            }
+        }, 1000);
+    }
+}
+
 // Garantir que o link hero funcione perfeitamente
 function setupHeroLink() {
     const heroLink = document.getElementById('hero-link');
@@ -80,17 +105,13 @@ function setupHeroLink() {
         heroLink.style.pointerEvents = 'auto';
         heroLink.style.cursor = 'pointer';
         
-        // Adicionar listener de clique para scroll suave
+        // Remover o href padrao para evitar comportamento de link tradicional
         heroLink.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            const featuresSection = document.getElementById('features');
-            if (featuresSection) {
-                setTimeout(function() {
-                    featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 50);
-            }
+            // Chamar a funcao de scroll robusta
+            scrollToFeatures();
         });
         
         // Adicionar listener de toque para garantir resposta no mobile
@@ -98,15 +119,16 @@ function setupHeroLink() {
             e.preventDefault();
             e.stopPropagation();
             
-            const featuresSection = document.getElementById('features');
-            if (featuresSection) {
-                setTimeout(function() {
-                    featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 50);
-            }
+            // Chamar a funcao de scroll robusta
+            scrollToFeatures();
         }, false);
         
-        console.log('Hero link setup complete - entire cover is clickable');
+        // Adicionar listener de touchstart para evitar comportamento padrao
+        heroLink.addEventListener('touchstart', function(e) {
+            // Nao fazer nada, apenas evitar comportamento padrao
+        }, false);
+        
+        console.log('Hero link setup complete - entire cover is clickable and scrolls to features');
     }
 }
 
