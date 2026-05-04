@@ -13,7 +13,8 @@ async function sendMessage() {
 
     try {
         const lang = document.getElementById('language-select').value;
-        const response = await fetch('https://cosmic-ai-horoscope.vercel.app/api/chat', {
+        // Usando URL relativa para que funcione tanto em produção quanto em preview
+        const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: text, lang: lang })
@@ -25,13 +26,15 @@ async function sendMessage() {
         
         if (data.message) {
             appendMessage('bot', data.message);
+        } else if (data.error) {
+            appendMessage('bot', `Erro: ${data.error}`);
         } else {
-            appendMessage('bot', 'Error: Connection failed.');
+            appendMessage('bot', 'Erro: Resposta inválida da API.');
         }
     } catch (err) {
         const loadingEl = document.getElementById(loadingId);
         if (loadingEl) loadingEl.remove();
-        appendMessage('bot', 'Error: Connection failed.');
+        appendMessage('bot', `Erro de Conexão: ${err.message}`);
     }
 }
 

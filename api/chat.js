@@ -7,6 +7,12 @@ export default async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
     const { message, lang = 'pt-BR' } = req.body;
+    console.log('Received message:', message, 'lang:', lang);
+
+    if (!process.env.OPENAI_API_KEY) {
+        console.error('Missing OPENAI_API_KEY');
+        return res.status(500).json({ error: 'API Key not configured' });
+    }
 
     try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -16,9 +22,16 @@ export default async function handler(req, res) {
                 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
             },
             body: JSON.stringify({
-                model: 'gpt-4o-mini',
+                model: 'gpt-4o',
                 messages: [
-                    { role: 'system', content: `You are CosmicAI, a luxury astrology assistant. Help the user in ${lang}.` },
+                    { 
+                        role: 'system', 
+                        content: `Você é o CosmicAI, um assistente de astrologia de luxo, místico e altamente preciso. 
+                        Sua personalidade é elegante, empática e profunda. 
+                        Você fornece horóscopos detalhados, insights sobre signos, compatibilidade amorosa e conselhos baseados nos movimentos celestiais.
+                        Sempre responda no idioma: ${lang}. 
+                        Mantenha um tom profissional, mas envolto em mistério cósmico.` 
+                    },
                     { role: 'user', content: message }
                 ],
                 temperature: 0.7
@@ -26,8 +39,13 @@ export default async function handler(req, res) {
         });
 
         const data = await response.json();
+        if (data.error) {
+            console.error('OpenAI Error:', data.error);
+            return res.status(500).json({ error: data.error.message });
+        }
         return res.status(200).json({ message: data.choices[0].message.content });
     } catch (err) {
+        console.error('Fetch Error:', err);
         return res.status(500).json({ error: 'Internal error' });
     }
 }
