@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" translate="no">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +8,6 @@
     <meta name="keywords" content="horóscopo grátis, horóscopo com IA, previsões astrológicas 2026, mapa astral gratuito, inteligência artificial astrologia, signos do zodíaco, horóscopo personalizado, futuro revelado">
     <meta name="author" content="CosmicAI">
     <meta name="robots" content="index, follow">
-    
-    <!-- Desabilitar Tradução Automática do Navegador -->
-    <meta name="google" content="notranslate">
-    <meta name="google-site-verification" content="">
-    <script>
-        // Impedir tradução automática do Chrome
-        if (typeof google !== 'undefined' && google.translate) {
-            google.translate.TranslateElement.getInstance().setOptions({
-                selectedLanguage: 'pt'
-            });
-        }
-    </script>
     
     <!-- Internationalization -->
     <link rel="alternate" hreflang="pt-BR" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/" />
@@ -106,8 +94,24 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero" id="hero-section" onclick="scrollToFeatures(event)">
-    </div>
+        <section class="hero">
+            <!-- Background Zodiac Wheel - Subtle Outline -->
+            <div class="bg-zodiac-container">
+                <img src="assets/img/zodiac-wheel-outline.png" alt="" class="bg-zodiac-wheel">
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                <div class="badge" data-i18n="hero_badge">Elegância & Tecnologia</div>
+                <h1 style="font-size: 0.1px; opacity: 0; position: absolute;">CosmicAI - Horóscopo Grátis com Inteligência Artificial</h1>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 700; margin-bottom: 2rem; color: white; line-height: 1; letter-spacing: -1px;" data-i18n="hero_title">Descubra Seu Destino</h2>
+                <p data-i18n="hero_description">Previsões exclusivas geradas por inteligência artificial avançada. O mistério do cosmos traduzido para o seu dia a dia.</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-large" id="hero-cta-btn" data-i18n="hero_cta">Ver Meu Horóscopo Agora</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- Features Section -->
     <section id="features" class="features">
