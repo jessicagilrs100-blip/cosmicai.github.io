@@ -28,7 +28,13 @@ const translations = {
         "footer_terms": "Termos de Uso",
         "chat_title": "🌟 Assistente Cósmico",
         "chat_welcome": "Olá! Sou o Assistente Cósmico. Faça qualquer pergunta sobre astrologia, horóscopo ou seu destino. ✨",
-        "chat_input_placeholder": "Faça uma pergunta..."
+        "chat_input_placeholder": "Faça uma pergunta...",
+        "trends_title": "Descubra seu Destino Cósmico",
+        "trends_subtitle": "Previsões personalizadas geradas por IA, análise de compatibilidade entre signos e insights astrológicos para guiar seu caminho.",
+        "select_sign": "Selecione seu Signo",
+        "back_to_home": "← Voltar",
+        "free_badge": "100% GRÁTIS",
+        "nav_home": "Página Inicial"
     },
     "en": {
         "title": "CosmicAI - AI Horoscope | Luxury Astrological Predictions",
@@ -59,7 +65,13 @@ const translations = {
         "footer_terms": "Terms of Use",
         "chat_title": "🌟 Cosmic Assistant",
         "chat_welcome": "Hello! I'm the Cosmic Assistant. Ask me any questions about astrology, horoscope or your destiny. ✨",
-        "chat_input_placeholder": "Ask a question..."
+        "chat_input_placeholder": "Ask a question...",
+        "trends_title": "Discover your Cosmic Destiny",
+        "trends_subtitle": "Personalized AI-generated predictions, sign compatibility analysis, and astrological insights to guide your path.",
+        "select_sign": "Select your Sign",
+        "back_to_home": "← Back",
+        "free_badge": "100% FREE",
+        "nav_home": "Home"
     },
     "es": {
         "title": "CosmicAI - Horóscopo con IA | Predicciones Astrológicas de Lujo",
@@ -90,6 +102,12 @@ const translations = {
         "footer_terms": "Términos de Uso",
         "chat_title": "🌟 Asistente Cósmico",
         "chat_welcome": "¡Hola! Soy el Asistente Cósmico. Hazme cualquier pregunta sobre astrología, horóscopo o tu destino. ✨",
-        "chat_input_placeholder": "Haz una pregunta..."
+        "chat_input_placeholder": "Haz una pregunta...",
+        "trends_title": "Descubre tu Destino Cósmico",
+        "trends_subtitle": "Predicciones personalizadas generadas por IA, análisis de compatibilidad entre signos e información astrológica para guiar tu camino.",
+        "select_sign": "Selecciona tu Signo",
+        "back_to_home": "← Volver",
+        "free_badge": "100% GRATIS",
+        "nav_home": "Inicio"
     }
 };

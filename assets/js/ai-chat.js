@@ -87,8 +87,8 @@ class AIChatBotManus {
 
     async getAIResponse(userMessage) {
         try {
-            // Usando o endpoint atualizado do servidor de IA
-            const response = await fetch('https://8000-iowkzk6h9u3qd8bi5x5ua-0cc9ef00.us2.manus.computer/api/chat', {
+            // Usando o endpoint relativo para funcionar em qualquer ambiente (Vercel ou local)
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 

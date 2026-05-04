@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AstroAI - Horóscopo com IA | Previsões Astrológicas</title>
+    <title data-i18n="title">CosmicAI - Horóscopo com IA | Previsões Astrológicas</title>
     <meta name="description" content="Descubra seu horóscopo com Inteligência Artificial. Previsões astrológicas personalizadas, mapa astral exclusivo e insights do universo. 100% gratuito e seguro.">
     <meta name="keywords" content="horóscopo, horoscopo, inteligência artificial, IA, astrologia, mapa astral, previsão, signo, zodíaco, cosmos">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/trends.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/trends.html">
+    <link rel="alternate" hreflang="en" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/trends.html">
+    <link rel="alternate" hreflang="es" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/trends.html">
+    <link rel="alternate" hreflang="x-default" href="https://jessicagilrs100-blip.github.io/cosmicai.github.io/trends.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -182,7 +186,12 @@
                 <a href="/" class="logo">CosmicAI</a>
             </div>
             <div class="nav-links">
-                <a href="/" aria-label="Voltar para página inicial">← Voltar</a>
+                <a href="/" data-i18n="back_to_home">← Voltar</a>
+                <select class="lang-select" aria-label="Selecionar Idioma">
+                    <option value="pt-BR">PT</option>
+                    <option value="en">EN</option>
+                    <option value="es">ES</option>
+                </select>
             </div>
         </div>
     </nav>
@@ -190,9 +199,9 @@
     <!-- Main Content -->
     <main class="astro-container">
         <div class="astro-header">
-            <div class="free-badge">100% GRÁTIS</div>
-            <h1>Descubra seu Destino Cósmico</h1>
-            <p>Previsões personalizadas geradas por IA, análise de compatibilidade entre signos e insights astrológicos para guiar seu caminho.</p>
+            <div class="free-badge" data-i18n="free_badge">100% GRÁTIS</div>
+            <h1 data-i18n="trends_title">Descubra seu Destino Cósmico</h1>
+            <p data-i18n="trends_subtitle">Previsões personalizadas geradas por IA, análise de compatibilidade entre signos e insights astrológicos para guiar seu caminho.</p>
         </div>
 
         <!-- AI Chat Section -->
@@ -212,7 +221,7 @@
         </section>
 
         <div>
-            <h2 style="text-align: center; color: #e0e7ff; margin-bottom: 2rem; font-size: 1.5rem;">Selecione seu Signo</h2>
+            <h2 style="text-align: center; color: #e0e7ff; margin-bottom: 2rem; font-size: 1.5rem;" data-i18n="select_sign">Selecione seu Signo</h2>
             
             <div class="zodiac-grid" id="zodiac-grid">
                 <!-- Zodiac buttons will be generated here -->
@@ -221,7 +230,7 @@
 
         <!-- Prediction Result -->
         <div class="prediction-result" id="prediction-result">
-            <h3 id="result-title"></h3>
+                <h3 id="result-title"></h3>
             <div id="result-content"></div>
         </div>
 
@@ -254,17 +263,19 @@
     <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer-links">
-                <a href="privacy-policy.html">Política de Privacidade</a>
+                <a href="privacy-policy.html" data-i18n="footer_privacy">Política de Privacidade</a>
                 <span class="footer-separator">·</span>
-                <a href="terms-of-use.html">Termos de Uso</a>
+                <a href="terms-of-use.html" data-i18n="footer_terms">Termos de Uso</a>
                 <span class="footer-separator">·</span>
-                <a href="/">Página Inicial</a>
+                <a href="/" data-i18n="nav_home">Página Inicial</a>
             </div>
-            <p class="footer-copy">&copy; 2026 CosmicAI. All Rights Reserved.</p>
+            <p class="footer-copy" data-i18n="footer_rights">&copy; 2026 CosmicAI. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/i18n.js"></script>
     <script src="assets/js/ai-chat.js"></script>
     <script>
         const zodiacSigns = [

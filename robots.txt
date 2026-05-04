@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /api/
+Allow: /api/chat # Permitir que crawlers vejam que a IA existe
 Disallow: /node_modules/
 
 # Sitemaps
