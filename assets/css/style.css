@@ -1,3 +1,8 @@
+/* ============================================
+   CosmicAI - Stylesheet
+   Otimizado para AdSense + SEO Multilíngue
+   ============================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -16,6 +21,7 @@
     --gold: #d4af37;
 }
 
+/* ========== BASE ========== */
 body {
     font-family: 'Inter', sans-serif;
     background: var(--darker-bg);
@@ -30,7 +36,31 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
+/* ========== ACCESSIBILITY & SEO ========== */
+/* Visually hidden but readable by search engines and screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* SEO multilingual content - hidden visually, indexed by search engines */
+.seo-multilingual {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* ========== NAVIGATION ========== */
 .navbar {
     position: fixed;
     width: 100%;
@@ -59,6 +89,7 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     color: white;
+    text-decoration: none;
 }
 
 .nav-links {
@@ -81,11 +112,11 @@ body {
     color: white;
 }
 
-/* Buttons */
+/* ========== BUTTONS ========== */
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
-    border-radius: 2px; /* Square edges for luxury feel */
+    border-radius: 2px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.4s ease;
@@ -132,7 +163,7 @@ body {
     color: white;
 }
 
-/* Hero Section */
+/* ========== HERO SECTION ========== */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -173,35 +204,7 @@ body {
     height: 100%;
 }
 
-/* Background Zodiac Wheel - Minimalist Outline */
-.bg-zodiac-container {
-    display: none; /* Removendo para não interferir na nova capa viral */
-}
-
-.bg-zodiac-wheel {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    animation: rotateWheel 180s linear infinite;
-    filter: invert(1); /* Make it white outline if the image is black */
-}
-
-@keyframes rotateWheel {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.badge {
-    display: inline-block;
-    color: var(--primary-purple);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
-.hero h1, .hero p, .badge {
+.hero h1 {
     display: none !important;
 }
 
@@ -212,7 +215,17 @@ body {
     align-items: center;
 }
 
-/* Features Section */
+/* ========== ADSENSE CONTAINER ========== */
+.adsense-container {
+    min-height: 90px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0;
+}
+
+/* ========== FEATURES SECTION ========== */
 .features {
     padding: 120px 0;
     background: var(--darker-bg);
@@ -263,12 +276,64 @@ body {
     font-weight: 300;
 }
 
-/* Responsive */
+/* ========== FOOTER ========== */
+.site-footer {
+    padding: 3rem 0 2rem;
+    text-align: center;
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-separator {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.75rem;
+}
+
+.footer-copy {
+    color: #444;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.footer-disclaimer {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.65rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 0 1rem;
+}
+
+/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .navbar {
         display: none;
     }
-    
+
     .hero {
         background: url('../img/hero-mobile-viral.png') no-repeat center center;
         background-size: cover;
@@ -276,7 +341,7 @@ body {
         align-items: flex-end;
         padding-bottom: 80px;
     }
-    
+
     .btn-large {
         width: 100% !important;
         background: transparent !important;
@@ -284,5 +349,24 @@ body {
         color: transparent !important;
         padding: 100px 0 !important;
         font-size: 0 !important;
+    }
+
+    .features h2 {
+        font-size: 2rem;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .features {
+        padding: 80px 0;
+    }
+
+    .features-grid {
+        gap: 2.5rem;
     }
 }
