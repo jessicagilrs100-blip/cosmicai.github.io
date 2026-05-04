@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/ai-chat.css">
     <style>
         .astro-container {
             max-width: 1200px;
@@ -194,6 +195,22 @@
             <p>Previsões personalizadas geradas por IA, análise de compatibilidade entre signos e insights astrológicos para guiar seu caminho.</p>
         </div>
 
+        <!-- AI Chat Section -->
+        <section class="ai-chat-section">
+            <div class="ai-chat-header">
+                <h3>🌟 Pergunte à Inteligência Cósmica</h3>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="chat-message bot-message">
+                    <p>Olá! Sou sua guia estelar. Faça qualquer pergunta sobre seu signo, destino ou o que o universo reserva para você hoje. ✨</p>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Ex: Como será meu dia no amor?">
+                <button id="send-btn" class="send-btn">➤</button>
+            </div>
+        </section>
+
         <div>
             <h2 style="text-align: center; color: #e0e7ff; margin-bottom: 2rem; font-size: 1.5rem;">Selecione seu Signo</h2>
             
@@ -248,6 +265,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="assets/js/ai-chat.js"></script>
     <script>
         const zodiacSigns = [
             { emoji: '♈', name: 'Áries', dates: '21 Mar - 19 Abr' },
