@@ -76,34 +76,29 @@ function openModal(sign) {
     const modalSignDates = document.getElementById('modalSignDates');
     const modalBody = document.getElementById('modalBody');
 
-    const predictions = {
-        aries: { icon: '♈', name: 'Áries', dates: '21 de março - 19 de abril', text: 'Sua energia está em alta hoje. Aproveite para focar em projetos pessoais que exigem coragem e iniciativa. No amor, seja mais direto sobre seus sentimentos.' },
-        taurus: { icon: '♉', name: 'Touro', dates: '20 de abril - 20 de maio', text: 'O dia pede paciência e foco na estabilidade financeira. Evite gastos impulsivos. No campo emocional, procure momentos de conforto e tranquilidade.' },
-        gemini: { icon: '♊', name: 'Gêmeos', dates: '21 de maio - 20 de junho', text: 'Sua mente está ágil e cheia de ideias. Ótimo momento para conversas importantes e aprendizados. Mantenha o foco para não se dispersar.' },
-        cancer: { icon: '♋', name: 'Câncer', dates: '21 de junho - 22 de julho', text: 'Sua intuição está aguçada. Ouça sua voz interior ao tomar decisões familiares. No trabalho, sua dedicação será notada e valorizada.' },
-        leo: { icon: '♌', name: 'Leão', dates: '23 de julho - 22 de agosto', text: 'Seu brilho pessoal atrai olhares. Use seu carisma para liderar e inspirar. No amor, o momento é de paixão e criatividade.' },
-        virgo: { icon: '♍', name: 'Virgem', dates: '23 de agosto - 22 de setembro', text: 'Dia excelente para organizar sua rotina e cuidar da saúde. Pequenos detalhes farão grande diferença no seu desempenho profissional.' },
-        libra: { icon: '♎', name: 'Libra', dates: '23 de setembro - 22 de outubro', text: 'Busque o equilíbrio em suas relações. O dia favorece parcerias e acordos. No campo social, você será o centro das atenções de forma positiva.' },
-        scorpio: { icon: '♏', name: 'Escorpião', dates: '23 de outubro - 21 de novembro', text: 'Momento de transformação profunda. Desapegue do que não serve mais. Sua força de vontade será sua maior aliada para superar desafios.' },
-        sagittarius: { icon: '♐', name: 'Sagitário', dates: '22 de novembro - 21 de dezembro', text: 'Sua sede de aventura está renovada. Explore novos horizontes, mesmo que mentalmente. Otimismo será a chave para o sucesso hoje.' },
-        capricorn: { icon: '♑', name: 'Capricórnio', dates: '22 de dezembro - 19 de janeiro', text: 'Foco total na carreira e objetivos de longo prazo. Sua persistência trará resultados sólidos. Não esqueça de reservar um tempo para o descanso.' },
-        aquarius: { icon: '♒', name: 'Aquário', dates: '20 de janeiro - 18 de fevereiro', text: 'Ideias inovadoras podem surgir hoje. Compartilhe sua visão com pessoas que pensam como você. O dia favorece atividades em grupo.' },
-        pisces: { icon: '♓', name: 'Peixes', dates: '19 de fevereiro - 20 de março', text: 'Sua sensibilidade está elevada. Use sua criatividade para expressar suas emoções. No amor, a conexão espiritual será fundamental.' }
+    // Detect language from HTML lang attribute
+    const lang = document.documentElement.lang.toLowerCase() || 'pt-br';
+    const t = translations[lang] || translations['pt-br'];
+    
+    const signIcons = {
+        aries: '♈', taurus: '♉', gemini: '♊', cancer: '♋', 
+        leo: '♌', virgo: '♍', libra: '♎', scorpio: '♏', 
+        sagittarius: '♐', capricorn: '♑', aquarius: '♒', pisces: '♓'
     };
 
-    const data = predictions[sign];
+    const data = t.signs[sign];
     if (data) {
-        modalIcon.textContent = data.icon;
+        modalIcon.textContent = signIcons[sign];
         modalSignName.textContent = data.name;
         modalSignDates.textContent = data.dates;
         modalBody.innerHTML = `
             <div class="prediction-section">
-                <h3>Previsão do Dia</h3>
+                <h3>${t.predictionTitle}</h3>
                 <p>${data.text}</p>
             </div>
             <div class="prediction-section">
-                <h3>Dica Astral</h3>
-                <p>Mantenha o pensamento positivo e confie no fluxo do universo.</p>
+                <h3>${t.astralTipTitle}</h3>
+                <p>${t.astralTipText}</p>
             </div>
         `;
         modal.classList.add('active');

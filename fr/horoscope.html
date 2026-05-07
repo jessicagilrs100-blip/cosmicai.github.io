@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horóscopo Grátis - Previsões para Todos os Signos | Zodíacos</title>
+    <meta name="description" content="Veja seu horóscopo personalizado e previsões para hoje. Descubra lo que os astros reservam para seu signo do zodíaco.">
+    <meta name="keywords" content="horóscopo grátis, previsões, signos zodíaco, horóscopo hoje, astrologia, mapa astral">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .horoscope-container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; margin-top: 80px; }
+        .horoscope-header { text-align: center; margin-bottom: 4rem; }
+        .horoscope-header h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: white; margin-bottom: 1rem; }
+        .horoscope-header p { color: #cbd5e1; font-size: 1.1rem; }
+        .signs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .sign-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.4s ease; }
+        .sign-card:hover { transform: translateY(-8px); border-color: #a78bfa; background: rgba(15, 23, 42, 0.9); box-shadow: 0 10px 30px rgba(167, 139, 250, 0.2); }
+        .sign-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+        .sign-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #a78bfa; margin-bottom: 0.5rem; }
+        .sign-dates { color: #94a3b8; font-size: 0.85rem; margin-bottom: 1.5rem; }
+        .sign-preview { color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px; }
+        .sign-card-btn { display: inline-block; padding: 0.7rem 1.5rem; background: #a78bfa; color: black; text-decoration: none; border-radius: 4px; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; font-family: inherit; }
+        .sign-card-btn:hover { background: #60a5fa; }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); }
+        .modal.active { display: flex; align-items: center; justify-content: center; }
+        .modal-content { background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 12px; padding: 3rem; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; }
+        .close-modal { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: #a78bfa; transition: all 0.3s ease; }
+        .close-modal:hover { color: #60a5fa; }
+        .modal-header { text-align: center; margin-bottom: 2rem; }
+        .modal-header .sign-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: #a78bfa; margin-bottom: 0.5rem; }
+        .modal-header .sign-dates { display: block; }
+        .prediction-section { margin-bottom: 2rem; }
+        .prediction-section h3 { color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem; font-weight: 600; }
+        .prediction-section p { color: #cbd5e1; line-height: 1.8; }
+        .ad-space-horoscope { background: rgba(167, 139, 250, 0.1); padding: 2rem; margin: 2rem 0; border-radius: 8px; text-align: center; color: #94a3b8; }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand"><span class="logo">Zodíacos</span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="horoscope.html">Horóscopo</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">Sobre</a>
+                <a href="contact.html">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="horoscope-container">
+        <div class="horoscope-header">
+            <h1>Seu Horóscopo Personalizado</h1>
+            <p>Clique no seu signo para ver as previsões astrológicas de hoje</p>
+        </div>
+
+        <div class="signs-grid">
+            <!-- Áries -->
+            <div class="sign-card" onclick="openModal('aries')">
+                <span class="sign-icon">♈</span>
+                <div class="sign-name">Áries</div>
+                <div class="sign-dates">21 de março - 19 de abril</div>
+                <div class="sign-preview">Energia e determinação marcam seu dia. Ótimo momento para tomar decisões importantes e iniciar novos projetos.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Touro -->
+            <div class="sign-card" onclick="openModal('taurus')">
+                <span class="sign-icon">♉</span>
+                <div class="sign-name">Touro</div>
+                <div class="sign-dates">20 de abril - 20 de maio</div>
+                <div class="sign-preview">Estabilidade e segurança são suas prioridades. Dia propício para investimentos e planejamento financeiro.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Gêmeos -->
+            <div class="sign-card" onclick="openModal('gemini')">
+                <span class="sign-icon">♊</span>
+                <div class="sign-name">Gêmeos</div>
+                <div class="sign-dates">21 de maio - 20 de junho</div>
+                <div class="sign-preview">Comunicação e criatividade em alta. Excelente para networking, aprendizado e novas conexões.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Câncer -->
+            <div class="sign-card" onclick="openModal('cancer')">
+                <span class="sign-icon">♋</span>
+                <div class="sign-name">Câncer</div>
+                <div class="sign-dates">21 de junho - 22 de julho</div>
+                <div class="sign-preview">Emoções e intuição guiam seu caminho. Dia ideal para aprofundar relacionamentos e cuidar de si mesmo.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Leão -->
+            <div class="sign-card" onclick="openModal('leo')">
+                <span class="sign-icon">♌</span>
+                <div class="sign-name">Leão</div>
+                <div class="sign-dates">23 de julho - 22 de agosto</div>
+                <div class="sign-preview">Confiança e criatividade em destaque. Seu carisma atrai oportunidades e reconhecimento profissional.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Virgem -->
+            <div class="sign-card" onclick="openModal('virgo')">
+                <span class="sign-icon">♍</span>
+                <div class="sign-name">Virgem</div>
+                <div class="sign-dates">23 de agosto - 22 de setembro</div>
+                <div class="sign-preview">Análise e organização são suas forças. Dia propício para resolver problemas e melhorar processos.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Libra -->
+            <div class="sign-card" onclick="openModal('libra')">
+                <span class="sign-icon">♎</span>
+                <div class="sign-name">Libra</div>
+                <div class="sign-dates">23 de setembro - 22 de outubro</div>
+                <div class="sign-preview">Equilíbrio e harmonia predominam. Excelente para negociações, parcerias e decisões importantes.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Escorpião -->
+            <div class="sign-card" onclick="openModal('scorpio')">
+                <span class="sign-icon">♏</span>
+                <div class="sign-name">Escorpião</div>
+                <div class="sign-dates">23 de outubro - 21 de novembro</div>
+                <div class="sign-preview">Intensidade e transformação marcam o dia. Ótimo para mudanças profundas e autoconhecimento.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Sagitário -->
+            <div class="sign-card" onclick="openModal('sagittarius')">
+                <span class="sign-icon">♐</span>
+                <div class="sign-name">Sagitário</div>
+                <div class="sign-dates">22 de novembro - 21 de dezembro</div>
+                <div class="sign-preview">Otimismo e expansão guiam seu caminho. Dia ideal para aventuras, viagens e novas experiências.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Capricórnio -->
+            <div class="sign-card" onclick="openModal('capricorn')">
+                <span class="sign-icon">♑</span>
+                <div class="sign-name">Capricórnio</div>
+                <div class="sign-dates">22 de dezembro - 19 de janeiro</div>
+                <div class="sign-preview">Disciplina e ambição em foco. Excelente para construir bases sólidas e alcançar objetivos.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Aquário -->
+            <div class="sign-card" onclick="openModal('aquarius')">
+                <span class="sign-icon">♒</span>
+                <div class="sign-name">Aquário</div>
+                <div class="sign-dates">20 de janeiro - 18 de fevereiro</div>
+                <div class="sign-preview">Inovação e originalidade em alta. Dia propício para ideias criativas e conexões humanitárias.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+
+            <!-- Peixes -->
+            <div class="sign-card" onclick="openModal('pisces')">
+                <span class="sign-icon">♓</span>
+                <div class="sign-name">Peixes</div>
+                <div class="sign-dates">19 de fevereiro - 20 de março</div>
+                <div class="sign-preview">Sensibilidade e espiritualidade em destaque. Dia ideal para meditação, criatividade e conexão interior.</div>
+                <button class="sign-card-btn">Ver Previsão</button>
+            </div>
+        </div>
+
+        <div class="ad-space-horoscope">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4896859041377751" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <!-- Modal de Previsões -->
+    <div id="predictionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <span class="sign-icon" id="modalIcon"></span>
+                <h2 id="modalSignName"></h2>
+                <span class="sign-dates" id="modalSignDates"></span>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer style="padding: 4rem 0; text-align: center; background: #000; border-top: 1px solid rgba(255,255,255,0.05); color: #444; letter-spacing: 2px; font-size: 0.7rem; text-transform: uppercase;">
+        <div class="container">
+            <p>&copy; 2026 Zodíacos. Todos os direitos reservados.</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="about.html" style="color: #666; text-decoration: none; margin: 0 10px;">Sobre</a> | 
+                <a href="contact.html" style="color: #666; text-decoration: none; margin: 0 10px;">Contato</a> | 
+                <a href="privacy-policy.html" style="color: #666; text-decoration: none; margin: 0 10px;">Política de Privacidade</a> | 
+                <a href="terms-of-use.html" style="color: #666; text-decoration: none; margin: 0 10px;">Termos de Uso</a>
+            </div>
+        </div>
+    </footer>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4896859041377751" crossorigin="anonymous"></script>
+    <script>
+        const predictions = {
+            aries: {
+                icon: '♈',
+                name: 'Áries',
+                dates: '21 de março - 19 de abril',
+                amor: 'Seu carisma está em alta! Se está em um relacionamento, é hora de renovar a paixão. Solteiros podem encontrar alguém especial em ambientes sociais.',
+                trabalho: 'Sua energia e determinação chamam atenção dos chefes. É um bom momento para propor ideias inovadoras e buscar promoções.',
+                saude: 'Mantenha a energia em equilíbrio. Pratique exercícios físicos e evite o estresse. Sua vitalidade está em alta, aproveite!',
+                financas: 'Dia favorável para investimentos. Confie em sua intuição, mas faça pesquisas antes de tomar decisões importantes.'
+            },
+            taurus: {
+                icon: '♉',
+                name: 'Touro',
+                dates: '20 de abril - 20 de maio',
+                amor: 'Estabilidade emocional favorece relacionamentos. É tempo de aprofundar conexões e demonstrar seu amor de forma consistente.',
+                trabalho: 'Sua confiabilidade é reconhecida. Foco em projetos de longo prazo traz bons resultados. Evite mudanças precipitadas.',
+                saude: 'Dia calmo e restaurador. Dedique tempo ao autocuidado e relaxamento. Sua saúde está em equilíbrio.',
+                financas: 'Bom momento para economizar e investir. Suas finanças tendem a se estabilizar. Evite gastos impulsivos.'
+            },
+            gemini: {
+                icon: '♊',
+                name: 'Gêmeos',
+                dates: '21 de maio - 20 de junho',
+                amor: 'Comunicação é a chave! Expresse seus sentimentos com clareza. Relacionamentos se fortalecem através do diálogo sincero.',
+                trabalho: 'Sua criatividade está em alta. Excelente dia para apresentações, negociações e networking. Aproveite oportunidades de colaboração.',
+                saude: 'Sua mente está ativa e criativa. Canalize essa energia em atividades que estimulem seu intelecto. Evite ansiedade.',
+                financas: 'Oportunidades de renda extra podem surgir. Sua comunicação persuasiva pode abrir portas financeiras.'
+            },
+            cancer: {
+                icon: '♋',
+                name: 'Câncer',
+                dates: '21 de junho - 22 de julho',
+                amor: 'Sua sensibilidade é seu ponto forte. Crie momentos de intimidade e conexão emocional com quem ama.',
+                trabalho: 'Confie em sua intuição profissional. Dia bom para trabalho em equipe e projetos que envolvam empatia e compreensão.',
+                saude: 'Cuide de sua saúde emocional. Meditação e momentos de tranquilidade são recomendados. Sua sensibilidade pede cuidado.',
+                financas: 'Dia para planejar e proteger suas finanças. Invista em segurança e estabilidade. Evite riscos desnecessários.'
+            },
+            leo: {
+                icon: '♌',
+                name: 'Leão',
+                dates: '23 de julho - 22 de agosto',
+                amor: 'Seu carisma está irresistível! Relacionamentos ganham brilho e paixão. Solteiros atraem admiradores naturalmente.',
+                trabalho: 'Liderança e criatividade em destaque. Seu trabalho será reconhecido. É hora de brilhar e assumir responsabilidades maiores.',
+                saude: 'Sua vitalidade está em alta. Aproveite para fazer atividades que o façam se sentir bem e confiante.',
+                financas: 'Dia favorável para negócios e investimentos. Sua confiança atrai oportunidades financeiras. Aproveite!'
+            },
+            virgo: {
+                icon: '♍',
+                name: 'Virgem',
+                dates: '23 de agosto - 22 de setembro',
+                amor: 'Seja mais espontâneo! Deixe a análise de lado e siga seu coração. Relacionamentos se fortalecem com autenticidade.',
+                trabalho: 'Sua atenção aos detalhes é valiosa. Dia excelente para organizar, planejar e resolver problemas complexos.',
+                saude: 'Organize sua rotina de saúde. Dia bom para começar novos hábitos saudáveis e revisar sua alimentação.',
+                financas: 'Analise suas finanças com cuidado. Dia propício para ajustar orçamentos e eliminar gastos desnecessários.'
+            },
+            libra: {
+                icon: '♎',
+                name: 'Libra',
+                dates: '23 de setembro - 22 de outubro',
+                amor: 'Harmonia e equilíbrio são seus aliados. Dia perfeito para resolver conflitos e fortalecer relacionamentos.',
+                trabalho: 'Sua diplomacia é valiosa. Excelente para negociações, parcerias e trabalho em equipe. Busque consenso.',
+                saude: 'Equilíbrio é essencial. Pratique atividades que tragam paz e harmonia. Sua saúde está em bom estado.',
+                financas: 'Dia para buscar equilíbrio financeiro. Avalie seus gastos e investimentos. Parcerias financeiras podem ser favoráveis.'
+            },
+            scorpio: {
+                icon: '♏',
+                name: 'Escorpião',
+                dates: '23 de outubro - 21 de novembro',
+                amor: 'Intensidade e profundidade marcam seus relacionamentos. Dia para conexões autênticas e transformadoras.',
+                trabalho: 'Sua determinação é invencível. Dia excelente para projetos que exigem foco e dedicação. Você vai longe!',
+                saude: 'Sua força interior está em alta. Canalize essa energia em atividades transformadoras e regeneradoras.',
+                financas: 'Dia para decisões financeiras importantes. Sua intuição é aguçada. Confie em seu instinto, mas pesquise também.'
+            },
+            sagittarius: {
+                icon: '♐',
+                name: 'Sagitário',
+                dates: '22 de novembro - 21 de dezembro',
+                amor: 'Otimismo e entusiasmo atraem pessoas. Dia perfeito para aventuras românticas e novas experiências com quem ama.',
+                trabalho: 'Sua visão ampla é valiosa. Dia bom para expandir negócios, buscar oportunidades e pensar grande.',
+                saude: 'Sua energia está elevada! Aproveite para fazer atividades ao ar livre e explorar novas práticas de bem-estar.',
+                financas: 'Dia favorável para expansão financeira. Oportunidades podem surgir. Mantenha o otimismo, mas seja realista.'
+            },
+            capricorn: {
+                icon: '♑',
+                name: 'Capricórnio',
+                dates: '22 de dezembro - 19 de janeiro',
+                amor: 'Responsabilidade e compromisso fortalecem seus relacionamentos. Dia para demonstrar dedicação e construir bases sólidas.',
+                trabalho: 'Sua ambição está direcionada. Dia excelente para trabalhar em objetivos de longo prazo e construir sua carreira.',
+                saude: 'Disciplina é sua aliada. Mantenha rotinas saudáveis e estruturadas. Sua saúde responde bem ao planejamento.',
+                financas: 'Dia propício para investimentos sólidos. Sua abordagem pragmática traz bons resultados financeiros.'
+            },
+            aquarius: {
+                icon: '♒',
+                name: 'Aquário',
+                dates: '20 de janeiro - 18 de fevereiro',
+                amor: 'Originalidade e liberdade são importantes. Relacionamentos prosperam quando há espaço para individualidade.',
+                trabalho: 'Suas ideias inovadoras são valiosas. Dia excelente para projetos criativos e pensamento fora da caixa.',
+                saude: 'Sua mente está criativa e livre. Atividades intelectuais e inovadoras trazem bem-estar.',
+                financas: 'Dia para ideias financeiras criativas. Oportunidades não convencionais podem surgir. Esteja aberto!'
+            },
+            pisces: {
+                icon: '♓',
+                name: 'Peixes',
+                dates: '19 de fevereiro - 20 de março',
+                amor: 'Sua sensibilidade e compaixão criam conexões profundas. Dia para expressar amor de forma espiritual e autêntica.',
+                trabalho: 'Sua criatividade está em alta. Dia bom para projetos artísticos, criativos e que envolvam empatia.',
+                saude: 'Cuide de sua saúde espiritual e emocional. Meditação e atividades criativas trazem equilíbrio.',
+                financas: 'Dia para confiar em sua intuição financeira. Sua sensibilidade pode guiá-lo bem. Evite decisões impulsivas.'
+            }
+        };
+
+        function openModal(sign) {
+            const prediction = predictions[sign];
+            const modal = document.getElementById('predictionModal');
+            
+            document.getElementById('modalIcon').textContent = prediction.icon;
+            document.getElementById('modalSignName').textContent = prediction.name;
+            document.getElementById('modalSignDates').textContent = prediction.dates;
+            
+            const body = `
+                <div class="prediction-section">
+                    <h3>💕 Amor</h3>
+                    <p>${prediction.amor}</p>
+                </div>
+                <div class="prediction-section">
+                    <h3>💼 Trabalho</h3>
+                    <p>${prediction.trabalho}</p>
+                </div>
+                <div class="prediction-section">
+                    <h3>🏥 Saúde</h3>
+                    <p>${prediction.saude}</p>
+                </div>
+                <div class="prediction-section">
+                    <h3>💰 Finanças</h3>
+                    <p>${prediction.financas}</p>
+                </div>
+            `;
+            
+            document.getElementById('modalBody').innerHTML = body;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('predictionModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('predictionModal');
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        window.onscroll = function() {
+            var nav = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                nav.classList.add("scrolled");
+            } else {
+                nav.classList.remove("scrolled");
+            }
+        };
+    </script>
+</body>
+</html>
