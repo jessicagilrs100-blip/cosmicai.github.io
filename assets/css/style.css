@@ -203,8 +203,15 @@ body {
     font-weight: 700;
     margin-bottom: 2rem;
     color: white;
-    line-height: 1;
+    line-height: 1.2;
     letter-spacing: -1px;
+}
+
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #a78bfa;
+    margin-bottom: 2rem;
 }
 
 .hero p {
@@ -276,10 +283,40 @@ body {
     font-weight: 300;
 }
 
+/* CTA Section */
+.cta-section {
+    padding: 120px 0;
+    background: var(--darker-bg);
+    position: relative;
+    z-index: 20;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.3rem;
     }
     
     .nav-links {
@@ -294,5 +331,9 @@ body {
     .bg-zodiac-container {
         width: 80vh;
         height: 80vh;
+    }
+    
+    .cta-section h2 {
+        font-size: 2rem;
     }
 }
