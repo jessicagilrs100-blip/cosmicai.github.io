@@ -1,7 +1,7 @@
 {
-  "name": "cosmicai-landing",
+  "name": "zodiacos-landing",
   "version": "1.0.0",
-  "description": "CosmicAI - Landing Page de Divulgação",
+  "description": "Zodíacos - Landing Page de Divulgação",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -68,4 +68,4 @@ document.querySelectorAll('.btn-large, .btn-primary').forEach(btn => {
     });
 });
 
-console.log('CosmicAI Landing Page loaded successfully! ✨');
+console.log('Zodíacos Landing Page loaded successfully! ✨');
