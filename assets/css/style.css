@@ -139,15 +139,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('../img/hero-desktop-viral.png') no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/hero-desktop-viral.png') no-repeat center center;
     background-size: cover;
     text-align: center;
     overflow: hidden;
+    padding-top: 80px;
 }
 
 @media (max-width: 768px) {
     .hero {
-        background: url('../img/hero-mobile-viral.png') no-repeat center center;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/hero-mobile-viral.png') no-repeat center center;
         background-size: cover;
     }
 }
