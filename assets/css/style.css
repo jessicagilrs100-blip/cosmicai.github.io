@@ -166,7 +166,7 @@ body {
 .hero .container {
     position: relative;
     z-index: 10;
-    display: none; /* Escondendo o texto sobreposto pois a imagem já contém o texto viral */
+    /* display: none; */ /* Ocultado temporariamente, reativando para permitir o clique no CTA */
 }
 
 /* Background Zodiac Wheel - Minimalist Outline */
