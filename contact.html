@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Zodíacos</title>
+    <meta name="description" content="Entre em contato conosco. Tire suas dúvidas sobre previsões astrológicas, horóscopo com IA e mapa astral.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .page-hero { min-height: 40vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%); padding: 4rem 0; margin-top: 80px; }
+        .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: white; text-align: center; }
+        .page-content { max-width: 700px; margin: 0 auto; padding: 4rem 2rem; }
+        .contact-form { background: rgba(15, 23, 42, 0.4); padding: 2rem; border-radius: 8px; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; color: #a78bfa; margin-bottom: 0.5rem; font-weight: 600; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(167, 139, 250, 0.3); color: white; border-radius: 4px; font-family: 'Inter', sans-serif; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #a78bfa; background: rgba(255, 255, 255, 0.1); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .btn-submit { background: #a78bfa; color: black; padding: 1rem 2rem; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease; }
+        .btn-submit:hover { background: #60a5fa; transform: translateY(-2px); }
+        .back-link { display: inline-block; margin-top: 2rem; color: #a78bfa; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand"><span class="logo">Zodíacos</span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">Sobre</a>
+                <a href="contact.html">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container"><h1>Entre em Contato</h1></div>
+    </section>
+
+    <div class="page-content">
+        <p style="color: #e2e8f0; margin-bottom: 2rem; text-align: center;">Tem uma pergunta ou sugestão? Adoraríamos ouvir de você!</p>
+        <form class="contact-form" action="https://formspree.io/f/xyzabc" method="POST">
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Assunto</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Mensagem</button>
+        </form>
+        <a href="index.html" class="back-link">← Voltar para a Home</a>
+    </div>
+
+    <footer style="padding: 4rem 0; text-align: center; background: #000; border-top: 1px solid rgba(255,255,255,0.05); color: #444; letter-spacing: 2px; font-size: 0.7rem; text-transform: uppercase;">
+        <div class="container">
+            <p>&copy; 2026 Zodíacos. Todos os direitos reservados.</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="about.html" style="color: #666; text-decoration: none; margin: 0 10px;">Sobre</a> | 
+                <a href="contact.html" style="color: #666; text-decoration: none; margin: 0 10px;">Contato</a> | 
+                <a href="privacy-policy.html" style="color: #666; text-decoration: none; margin: 0 10px;">Política de Privacidade</a> | 
+                <a href="terms-of-use.html" style="color: #666; text-decoration: none; margin: 0 10px;">Termos de Uso</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            var nav = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                nav.classList.add("scrolled");
+            } else {
+                nav.classList.remove("scrolled");
+            }
+        };
+    </script>
+</body>
+</html>
